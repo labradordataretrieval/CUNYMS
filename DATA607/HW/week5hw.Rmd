@@ -10,6 +10,18 @@ knitr::opts_chunk$set(echo = TRUE)
 #install.packages("dplyr")
 ```
 
+```{bash, echo=FALSE}
+rm ../data/numbersense.csv
+
+echo "From, Arrival, Los Angeles,Phoenix,San Diego,San Francisco,Seattle" >> ../data/numbersense.csv
+echo "ALASKA,on time,497,221,212,503,1841" >> ../data/numbersense.csv
+echo "ALASKA,delayed,62,12,20,102,305" >> ../data/numbersense.csv
+echo "AM WEST,on time,694,4840,383,320,201" >> ../data/numbersense.csv
+echo "AM WEST,delayed,117,415,65,129,61" >> ../data/numbersense.csv
+
+cat ../data/numbersense.csv
+```
+
 ```{r input}
 #Do we have to edit ?
 my_data <- read.delim("../data/numbersense.csv")
