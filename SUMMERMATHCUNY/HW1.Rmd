@@ -1,0 +1,364 @@
+---
+title: "HW1"
+author: "Alexander Niculescu"
+date: "July 10, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(Deriv)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\---
+title: "R Notebook"
+output: hw_1
+---
+
+Test Name: homework1(Test)
+
+1. 	It costs a toy retailer $10 to purchase a certain doll.  He estimates that, if he charges x dollars per doll, he can sell 80 - 2x  dolls per week.  Find a function for his weekly profit.  f(x) = 80 - 2(10)
+```{r}
+f <- function(x) (80-2*x)*(x-10)
+f
+```
+2. 	Given the following function:
+	 f x = 8x3 + 7x2 - 5
+
+```{r}
+f <- function(x) 8*x^3+7*x^2-5
+#Step 1. Find  f 3. 
+f(3)
+#Step 2. Find  f -2.  
+f(-2)
+```
+Step 3. Find  f x + c.  We can move it left or right by adding a constant to the x-value:
+
+3. 	Use the graph to find the indicated limits.  If there is no limit, state "Does not exist".  
+Step 1.
+2
+Step 2.
+5
+Step 3.
+DNE
+
+4. 	Find the derivative for the following function.
+	 f x = -2x3
+```{r}
+Deriv(~ (-2)*x^3, "x")
+```
+
+5. 	Find the derivative for the following function.
+	 f x = -8x2
+
+```{r}
+Deriv(~ (-8)/(x^2), "x") 
+```
+6. 	Find the derivative for the following function.
+	gx = 53x
+
+```{r}
+Deriv(~ (5)*x^(1/3), "x")
+``` 
+
+7. 	Find the derivative for the following function.
+	y = -2x98
+
+```{r}
+Deriv(~ (-2) * x^(9/8), "x")
+```
+
+8. 	Consider the graph of f x.  What is the average rate of change of f x  from x1 = 0  to x2 = 4 ?  Please write your answer as an integer or simplified fraction. 
+(35-40)/(4-0) = -5/4
+
+9. 	The cost of producing x baskets is given by Cx = 630 + 2.4x.  Determine the average cost function.   
+```{r}
+f <- function(x) (630+2.4*x)/(x)
+f
+```
+
+10. 	Use the Product Rule or Quotient Rule to find the derivative.
+	 f x = -2x-2 + 1 -5x + 9
+
+```{r}
+Deriv(~ (-2*x^(-2)+1)*(-5*x+9), "x")
+```
+
+11. 	Use the Product Rule or Quotient Rule to find the derivative.
+	 f x = 5x12 + 7-x3 + 1
+```{r}
+Deriv(~ (5*x^(1/2)+7)/(-x^3+1), "x")
+```
+ 
+
+12. 	Find the derivative for the given function.  Write your answer using positive and negative exponents and fractional exponents instead of radicals.
+	 f x = 3x-3 - 8x + 643
+```{r}
+Deriv(~ (3*x^(-3)-8*x+6)^(4/3), "x")
+```
+
+13. 	After a sewage spill, the level of pollution in Sootville is estimated by  f t = 550t2 t2 + 15, where t  is the time in days since the spill occurred.  How fast is the level changing after 3  days?  Round to the nearest whole number. 
+
+```{r}
+f <- function(t) round((550*t^2)/(t^2+15)^(1/2))
+fprime <- function(t) Deriv(~ (550*t^2)/(t^2+15)^(1/2), "t")
+f(3)
+```
+ 
+
+14. 	The average home attendance per week at a Class AA baseball park varied according to the formula Nt = 10006 + 0.1t12 where  t is the number of weeks into the season 0 £ t £ 14 and  N represents the number of people.
+
+Step 1. What was the attendance during the third week into the season?  Round your answer to the nearest whole number. 
+```{r}
+N <- function(t) round(1000 * (6 + 0.1 * t)^(1/2))
+N(3)
+```
+
+Step 2. Determine  N ´5 and interpret its meaning.  Round your answer to the nearest whole number.  
+```{r}
+N1 <- function(t) round(50 / (6 + 0.1 * t)^(1/2))
+N1(5)
+```
+15. 	Consider the following function:
+	3x3 + 4y3 = 77
+       
+```{r}
+#Step 1. Use implicit differentiation to find dydx.  
+#dy(x)/d(x) = 3*x^2/4*y^2
+
+```
+
+```{r}
+#Step 2. Find the slope of the tangent line at 3, -1.  
+#dy(x)/d(x) = 3*(3)^2/4*(-1)^2 = 18/4
+```
+
+16. 	Find the intervals on which the following function is increasing and on which it is decreasing.
+	f x = x + 3x - 8
+	
+```{r}
+Deriv(~ (x+3)/(x-8), "x")
+#(-∞,8),(8, +∞)
+```	
+
+
+17. 	A frozen pizza is placed in the oven at t = 0.  The function Ft = 14 + 367t2t2 + 100  approximates the temperature (in degrees Fahrenheit) of the pizza at time t . 
+
+
+```{r}
+#Step 1. Determine the interval for which the temperature is increasing and the interval for which it is decreasing.  Please express your answers as open intervals. 
+Deriv(~ 14+(367*t^2)/(t^2+100), "t")
+Deriv(Deriv(~ 14+(367*t^2)/(t^2+100), "t"))
+#t is increasing from (0, +∞)
+
+#Step 2. Over time, what temperature is the pizza approaching? 
+f <- function(t) 14+(367*t^2)/(t^2+100)
+#lim as t -> inf = 381 degrees F
+
+```	
+18. 	A study says that the package flow in the East during the month of November follows  f x = x33340000 - 7x29475 + 42417727x1265860000 + 133, where 1 £ x £ 30  is the day of the month and  f x  is in millions of packages.  What is the maximum number of packages delivered in November?  On which day are the most packages delivered?  Round your final answer to the nearest hundredth. 
+```{r}
+
+f <- function(x) (x^3/3340000 - 7*x^2/9475 + 42417727*x/1265860000 + 1/33)
+#the equation is f'(x)
+fprime <- function(x) Deriv(~ (x^3/3340000 - 7*x^2/9475 + 42417727*x/1265860000 + 1/33), "x")
+
+fprime(0)
+
+#solving for f'(x) = 0, we get 23 as a root
+#0 = 0.0335090191648366 + x * (8.98203592814371e-07 * x - 0.00147757255936675) 
+
+#then we plug it into the original equation to get the number of packages
+f(23)
+#approximately 0.42 million packages 
+
+```
+
+ 
+
+19. 	Use the Second Derivative Test to find all local extrema, if the test applies.  Otherwise, use the First Derivative Test.  Write any local extrema as an ordered pair.
+	f x = 7x2 + 28x - 35 
+	
+```{r}
+f <-function(x) expression(7*x^2 + 28*x - 35)
+fprime <- function(x) D(expression(7*x^2 + 28*x - 35), 'x')
+fsecondprime <- function(x)D(D(expression(7*x^2 + 28*x - 35), 'x'), 'x')
+
+# when f'(x) = 0, x = -2
+f(-2)
+#solving for f(-2) = (7 * x^2 + 28 * x - 35); we get 63
+
+#local min(-2, 63)
+```
+ 
+ 
+
+
+20. 	Use the Second Derivative Test to find all local extrema, if the test applies.  Otherwise, use the First Derivative Test.  Write any local extrema as an ordered pair.
+	f x = -6x^3 + 27x^2 + 180x
+```{r}
+f <-function(x) (-6*x^3 + 27*x^2 + 180*x)
+fprime <-function(x) D(expression(-6*x^3 + 27*x^2 + 180*x), 'x')
+fdoubleprime <-function(x) D(D(expression(-6*x^3 + 27*x^2 + 180*x), 'x'), 'x')
+
+fprime
+#when f'(0) = -6*x^3 + 27*x^2 + 180*x; x(-2, 5)
+
+fdoubleprime(-2)
+fdoubleprime(5)
+#when f''(x) 54 - 36x we plug in x(5, -2) -> (-126, 126)
+
+f(-2)
+f(5)
+#for the pair our local min is (-2, 204) and max (5, 825)
+```
+
+ 
+
+21. 	A beauty supply store expects to sell 120 flat irons during the next year.  It costs $1.60 to store one flat iron for one year.  To reorder, there is a fixed cost of $6 , plus $4.50  for each flat iron ordered.  In what lot size and how many times per year should an order be placed to minimize inventory costs? 
+```{r}
+f<-function(x) (120/x*1.6+x*(6+4.5*120/x))
+
+fprime <-function(x) Deriv(~ 120/x*1.6+x*(6+4.5*120/x), 'x')
+fsecondprime <-function(x)Deriv(~ 6 - 192/x^2, 'x')
+
+fprime(0)
+#if f'(0) is 30, then we plug in to f(30)
+f(30)
+#then we divide f(30)/120 to get 726.4/120 is approximately 6
+#so a lot size of 30 6 times a year
+```
+ 
+
+22. 	A shipping company must design a closed rectangular shipping crate with a square base.  The volume is 18432 ft3.  The material for the top and sides costs $3 per square foot and the material for the bottom costs $5 per square foot.  Find the dimensions of the crate that will minimize the total cost of material. 
+
+```{r}
+# 18432 = (base = b^2, side = h, $3/ft^2)
+#18432 = x^2y
+
+#f<-function(x) (x^2y)
+# (32, 24) 
+
+```
+ 
+
+23. 	A farmer wants to build a rectangular pen and then divide it with two interior fences.  The total area inside of the pen will be 1056 square yards.  The exterior fencing costs $14.40 per yard  and the interior fencing costs $12.00 per yard .  Find the dimensions of the pen that will minimize the cost.
+
+```{r}
+#1056 = x*y
+#[exterior]14.40*(2y+2x)+ [interior]12*(2x) 
+#plugging in y as 1054/x;
+#14.40(2(1054/x)+2x)+12(2x)
+#(24,44)
+```
+
+
+24. 	It is determined that the value of a piece of machinery declines exponentially.  A machine that was purchased 7 years ago for $67000 is worth $37000 today.  What will be the value of the machine 9 years from now?  Round your answer to the nearest cent.
+```{r}
+#ab^t 400->426.80 in 11 years
+f <- function(t) 67000*((37000/67000)^(t/7))
+#7 + 9 = 16
+f(16)
+```
+ 
+
+25. 	The demand function for a television is given by p = Dx = 23.2 - 0.4x dollars.  Find the level of production for which the revenue is maximized. 
+```{r}
+#-23.2/0.4 = 29
+```
+
+ 
+26. 	The amount of goods and services that costs $400 on January 1, 1995  costs $426.80  on January 1, 2006 .  Estimate the cost of the same goods and services on  January 1, 2017.  Assume the cost is growing exponentially.  Round your answer to the nearest cent.
+```{r}
+#ab^t 400->426.80 in 11 years
+f <- function(t) 400*(426.80/400)^(t/11)
+f(11)
+#The future value below
+f(22)
+```
+
+
+27. 	A manufacturer has determined that the marginal profit from the production and sale of x  clock radios is approximately 380 - 4x dollars per clock radio.   
+
+Step 1. Find the profit function if the profit from the production and sale of 38  clock radios is $1700. 
+```{r}
+#Integral of 380-4x dx = 380x-2*x^2
+#1700 = 380*38-2*(38^2)+c; c=-9852
+```
+
+
+Step 2. What is the profit from the sale of 56 clock radios? 
+```{r}
+#The profit for 56 is 380*56-2*(56)^2 - 9852
+#The profit is $5156
+```
+
+28. 	Use integration by substitution to solve the integral below.
+	
+-5ln(y)^3/y dy
+```{r}
+#u = ln(y); du/dy = 1/y
+#integral of -5ln(y)^3/y dy = -(5/4)ln(y)^4+C
+```
+
+ 
+
+29. 	It was discovered that after t years a certain population of wild animals will increase at a rate of P´t = 75 - 9t12 animals per year.  Find the increase in the population during the first 9 years after the rate was discovered.  Round your answer to the nearest whole animal. 
+```{r}
+#The integral from 0 to 9 is (75-9sqrt(t) dt) = 513
+```
+ 
+
+30. 	Find the area of the region bounded by the graphs of the given equations.
+	y = 6x2,  y = 6x
+Enter your answer below. 
+
+```{r}
+#A = integral from 0 to 1 of 6x (upper) - 6x^2(lower) 
+# integral of 6x^2 from 0 to 1 is 2 and integral of 6x is 3
+# the area is 1
+```
+
+31. 	Solve the differential equation given below.
+	dydx = x3y
+
+```{r}
+#x^3 -> x^4/4
+#e^((x^4)/4) + c
+```
+
+32. 	Use integration by parts to evaluate the definite integral below.
+Write your answer as a fraction. 
+
+```{r}
+#from -7 to 2 for x*sqrt(x+7)
+#u=x, du=√x+7dx √dx, u=2/3(x+7)^2/3
+#=-144/5
+```
+
+33. 	The following can be answered by finding the sum of a finite or infinite geometric sequence.  Round the solution to 2 decimal places.
+	A rubber ball is dropped from a height of 46 meters, and on each bounce it rebounds up 22 %  of its previous height.
+
+Step 1. How far has it traveled vertically at the moment when it hits the ground for the 20th time?  
+```{r}
+# from 1 to 20 for 46*(.22)^x
+#comes out to 12.9743589....
+#rounds out to 12.97
+
+```
+
+Step 2. If we assume it bounces indefinitely, what is the total vertical distance traveled? 
+```{r}
+#the ball has been displaced 46 meters and bounces
+# c + 2(Sigma(1, ∞) for (46*(.22)^x)
+# comes out to 46+2(12.97) = 71.94
+```
+34. 	Find the Taylor polynomial of degree 5 near x = 4  for the following function.
+	y = 3e^(5x - 3) 
+```{r}
+#this function incepted me back to freshman year of college.  It reminds me of a maclaurin series for pi
+#It was a foggy morning, and as usual I was trying to memorize ln / e and trig shortcuts... 
+3*(e^17)+15*(e^17)*(x-4)+75/2*(e^17)*(x-4)^2+125/2*(e^17)*(x-4)^3+625/8*(e^17)*(x-4)^4+625/8*(e^17)*(x-4)^5
+```
+ 
+
