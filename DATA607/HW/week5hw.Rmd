@@ -1,0 +1,64 @@
+---
+title: "week5hw"
+author: "alexander"
+date: "9/24/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#install.packages("dplyr")
+```
+
+```{r input}
+#Do we have to edit ?
+my_data <- read.delim("../data/numbersense.csv")
+#my_data
+
+arrivals <- read.csv("../data/numbersense.csv")
+
+# use tidyr and dplyr as needed to tidy and transform your data. 
+
+#head(flights)
+#dim(flights)
+library(dplyr)
+library(tidyr)
+
+arrivals
+
+arrival_delayed <- filter(arrivals, Arrival == "delayed")
+arrival_delayed_ALASKA  <- filter(arrival_delayed, From == "ALASKA")
+arrival_delayed_AM_WEST <- filter(arrival_delayed, From == "AM WEST")
+
+arrival_delayed %>%
+  summarise(avg_delay   = mean(Los.Angeles), 
+              min_delay = min(Los.Angeles),
+              max_delay = max(Los.Angeles),
+              total = n())
+
+arrival_delayed
+
+
+
+arrival_delayed_ALASKA_all <- arrival_delayed_ALASKA %>% 
+  gather(arrival_delayed_ALASKA, all_cities_delayed, Los.Angeles, San.Diego, San.Francisco, Phoenix, Seattle)
+
+arrival_delayed_AM_WEST_all <- arrival_delayed_AM_WEST %>% 
+  gather(arrival_delayed_ALASKA, all_cities_delayed, Los.Angeles, San.Diego, San.Francisco, Phoenix, Seattle)
+
+
+arrival_delayed_AM_WEST_all %>% 
+  summarise(avg_delay   = mean(all_cities_delayed), 
+              min_delay = min(all_cities_delayed),
+              max_delay = max(all_cities_delayed),
+              total = n())
+
+arrival_delayed_ALASKA_all %>% 
+  summarise(avg_delay   = mean(all_cities_delayed), 
+              min_delay = min(all_cities_delayed),
+              max_delay = max(all_cities_delayed),
+              total = n())
+
+summary(arrival_delayed_ALASKA_all)
+summary(arrival_delayed_AM_WEST_all)
+```
