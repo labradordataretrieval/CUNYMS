@@ -42,11 +42,13 @@ arrival_delayed <- filter(arrivals, Arrival == "delayed")
 arrival_delayed_ALASKA  <- filter(arrival_delayed, From == "ALASKA")
 arrival_delayed_AM_WEST <- filter(arrival_delayed, From == "AM WEST")
 
+#put for loop
 arrival_delayed %>%
   summarise(avg_delay   = mean(Los.Angeles), 
               min_delay = min(Los.Angeles),
               max_delay = max(Los.Angeles),
-              total = n())
+              sd        = sd(Los.Angeles),
+              total     = n())
 
 arrival_delayed
 
@@ -63,13 +65,15 @@ arrival_delayed_AM_WEST_all %>%
   summarise(avg_delay   = mean(all_cities_delayed), 
               min_delay = min(all_cities_delayed),
               max_delay = max(all_cities_delayed),
-              total = n())
+              sd        = sd(all_cities_delayed),
+              total     = n())
 
 arrival_delayed_ALASKA_all %>% 
   summarise(avg_delay   = mean(all_cities_delayed), 
               min_delay = min(all_cities_delayed),
               max_delay = max(all_cities_delayed),
-              total = n())
+              sd        = sd(all_cities_delayed),
+              total     = n())
 
 summary(arrival_delayed_ALASKA_all)
 summary(arrival_delayed_AM_WEST_all)

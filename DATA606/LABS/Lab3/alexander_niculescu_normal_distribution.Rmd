@@ -47,6 +47,15 @@ fdims <- subset(bdims, sex == 0)
 1.  Make a histogram of men's heights and a histogram of women's heights.  How 
     would you compare the various aspects of the two distributions?
 
+```{r male-female-histograms}
+hist(mdims$hgt,main = "Male Height Chart",   xlab = "Height cm", ylab = "number of people", ylim=c(0,80))
+hist(fdims$hgt,main = "Female Height Chart", xlab = "Height cm", ylab = "number of people")
+
+summary(mdims$hgt)
+summary(fdims$hgt)
+
+I would say the Male chart looks much closer to a bell curve as compared to the female chart which is heavier on the left tail.
+```
 ## The normal distribution
 
 In your description of the distributions, did you use words like *bell-shaped* 
