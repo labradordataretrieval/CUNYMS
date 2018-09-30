@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{bash, echo=FALSE}
+# not doing a file check, just generating the sample set every time
 rm ../data/numbersense.csv
 
 echo "From, Arrival, Los Angeles,Phoenix,San Diego,San Francisco,Seattle" >> ../data/numbersense.csv
@@ -22,59 +23,86 @@ echo "AM WEST,delayed,117,415,65,129,61" >> ../data/numbersense.csv
 cat ../data/numbersense.csv
 ```
 
-```{r input}
-#Do we have to edit ?
-my_data <- read.delim("../data/numbersense.csv")
-#my_data
-
-arrivals <- read.csv("../data/numbersense.csv")
-
+```{r load-flights-csv}
 # use tidyr and dplyr as needed to tidy and transform your data. 
-
-#head(flights)
-#dim(flights)
 library(dplyr)
 library(tidyr)
 
-arrivals
+arrivals <- read.csv("../data/numbersense.csv")
+
+#data preview
+head(arrivals)
+```
+
+```{r dplyer-filter-delay-data}
 
 arrival_delayed <- filter(arrivals, Arrival == "delayed")
 arrival_delayed_ALASKA  <- filter(arrival_delayed, From == "ALASKA")
 arrival_delayed_AM_WEST <- filter(arrival_delayed, From == "AM WEST")
 
-#put for loop
-arrival_delayed %>%
+#TODO ITERATE Through list
+#c(Phoenix, San.Diego, San.Francisco, Seattle)
+arrival_delayed_LA <- arrival_delayed %>%
   summarise(avg_delay   = mean(Los.Angeles), 
               min_delay = min(Los.Angeles),
               max_delay = max(Los.Angeles),
               sd        = sd(Los.Angeles),
               total     = n())
 
-arrival_delayed
+arrival_delayed_SD <- arrival_delayed %>%
+  summarise(avg_delay   = mean(San.Diego), 
+              min_delay = min(San.Diego),
+              max_delay = max(San.Diego),
+              sd        = sd(San.Diego),
+              total     = n())
+
+arrival_delayed_SF <- arrival_delayed %>%
+  summarise(avg_delay   = mean(San.Francisco), 
+              min_delay = min(San.Francisco),
+              max_delay = max(San.Francisco),
+              sd        = sd(San.Francisco),
+              total     = n())
+
+arrival_delayed_SEA <- arrival_delayed %>%
+  summarise(avg_delay   = mean(Seattle), 
+              min_delay = min(Seattle),
+              max_delay = max(Seattle),
+              sd        = sd(Seattle),
+              total     = n())
+
+arrival_delayed_PHX <- arrival_delayed %>%
+  summarise(avg_delay   = mean(Phoenix), 
+              min_delay = min(Phoenix),
+              max_delay = max(Phoenix),
+              sd        = sd(Phoenix),
+              total     = n())
 
 
+arrival_delayed_LA; arrival_delayed_SF; arrival_delayed_LA; arrival_delayed_PHX; arrival_delayed_SEA;
 
 arrival_delayed_ALASKA_all <- arrival_delayed_ALASKA %>% 
   gather(arrival_delayed_ALASKA, all_cities_delayed, Los.Angeles, San.Diego, San.Francisco, Phoenix, Seattle)
 
 arrival_delayed_AM_WEST_all <- arrival_delayed_AM_WEST %>% 
-  gather(arrival_delayed_ALASKA, all_cities_delayed, Los.Angeles, San.Diego, San.Francisco, Phoenix, Seattle)
+  gather(arrival_delayed_AM_WEST_all, all_cities_delayed, Los.Angeles, San.Diego, San.Francisco, Phoenix, Seattle)
 
-
-arrival_delayed_AM_WEST_all %>% 
+arrival_delayed_AM_WEST_all_stats <- arrival_delayed_AM_WEST_all %>% 
   summarise(avg_delay   = mean(all_cities_delayed), 
               min_delay = min(all_cities_delayed),
               max_delay = max(all_cities_delayed),
               sd        = sd(all_cities_delayed),
+              sum       = sum(all_cities_delayed),
               total     = n())
 
-arrival_delayed_ALASKA_all %>% 
+arrival_delayed_ALASKA_all_stats <- arrival_delayed_ALASKA_all %>% 
   summarise(avg_delay   = mean(all_cities_delayed), 
               min_delay = min(all_cities_delayed),
               max_delay = max(all_cities_delayed),
               sd        = sd(all_cities_delayed),
+              sum       = sum(all_cities_delayed),
               total     = n())
 
-summary(arrival_delayed_ALASKA_all)
-summary(arrival_delayed_AM_WEST_all)
+summary(arrival_delayed_ALASKA_all); summary(arrival_delayed_AM_WEST_all)
+print(arrival_delayed_AM_WEST_all_stats); print(arrival_delayed_ALASKA_all_stats)
 ```
+After looking at both summaries and basic statistics for the delayed sample set, it can be inferred that the delays for AM WEST were more substantial with a higher sd, min, mean, and max.

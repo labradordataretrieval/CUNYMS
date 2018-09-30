@@ -128,21 +128,12 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>#Do we have to edit ?
-my_data &lt;- read.delim(&quot;../data/numbersense.csv&quot;)</code></pre>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote
-## = quote, : incomplete final line found by readTableHeader on '../data/
-## numbersense.csv'</code></pre>
-<pre class="r"><code>#my_data
-
-arrivals &lt;- read.csv(&quot;../data/numbersense.csv&quot;)</code></pre>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote
-## = quote, : incomplete final line found by readTableHeader on '../data/
-## numbersense.csv'</code></pre>
+<pre><code>## From, Arrival, Los Angeles,Phoenix,San Diego,San Francisco,Seattle
+## ALASKA,on time,497,221,212,503,1841
+## ALASKA,delayed,62,12,20,102,305
+## AM WEST,on time,694,4840,383,320,201
+## AM WEST,delayed,117,415,65,129,61</code></pre>
 <pre class="r"><code># use tidyr and dplyr as needed to tidy and transform your data. 
-
-#head(flights)
-#dim(flights)
 library(dplyr)</code></pre>
 <pre><code>## 
 ## Attaching package: 'dplyr'</code></pre>
@@ -154,7 +145,10 @@ library(dplyr)</code></pre>
 ##     intersect, setdiff, setequal, union</code></pre>
 <pre class="r"><code>library(tidyr)
 
-arrivals</code></pre>
+arrivals &lt;- read.csv(&quot;../data/numbersense.csv&quot;)
+
+#data preview
+head(arrivals)</code></pre>
 <pre><code>##      From Arrival Los.Angeles Phoenix San.Diego San.Francisco Seattle
 ## 1  ALASKA on time         497     221       212           503    1841
 ## 2  ALASKA delayed          62      12        20           102     305
@@ -164,39 +158,78 @@ arrivals</code></pre>
 arrival_delayed_ALASKA  &lt;- filter(arrival_delayed, From == &quot;ALASKA&quot;)
 arrival_delayed_AM_WEST &lt;- filter(arrival_delayed, From == &quot;AM WEST&quot;)
 
-arrival_delayed %&gt;%
+#TODO ITERATE Through list
+#c(Phoenix, San.Diego, San.Francisco, Seattle)
+arrival_delayed_LA &lt;- arrival_delayed %&gt;%
   summarise(avg_delay   = mean(Los.Angeles), 
               min_delay = min(Los.Angeles),
               max_delay = max(Los.Angeles),
-              total = n())</code></pre>
-<pre><code>##   avg_delay min_delay max_delay total
-## 1      89.5        62       117     2</code></pre>
-<pre class="r"><code>arrival_delayed</code></pre>
-<pre><code>##      From Arrival Los.Angeles Phoenix San.Diego San.Francisco Seattle
-## 1  ALASKA delayed          62      12        20           102     305
-## 2 AM WEST delayed         117     415        65           129      61</code></pre>
+              sd        = sd(Los.Angeles),
+              total     = n())
+
+arrival_delayed_SD &lt;- arrival_delayed %&gt;%
+  summarise(avg_delay   = mean(San.Diego), 
+              min_delay = min(San.Diego),
+              max_delay = max(San.Diego),
+              sd        = sd(San.Diego),
+              total     = n())
+
+arrival_delayed_SF &lt;- arrival_delayed %&gt;%
+  summarise(avg_delay   = mean(San.Francisco), 
+              min_delay = min(San.Francisco),
+              max_delay = max(San.Francisco),
+              sd        = sd(San.Francisco),
+              total     = n())
+
+arrival_delayed_SEA &lt;- arrival_delayed %&gt;%
+  summarise(avg_delay   = mean(Seattle), 
+              min_delay = min(Seattle),
+              max_delay = max(Seattle),
+              sd        = sd(Seattle),
+              total     = n())
+
+arrival_delayed_PHX &lt;- arrival_delayed %&gt;%
+  summarise(avg_delay   = mean(Phoenix), 
+              min_delay = min(Phoenix),
+              max_delay = max(Phoenix),
+              sd        = sd(Phoenix),
+              total     = n())
+
+
+arrival_delayed_LA; arrival_delayed_SF; arrival_delayed_LA; arrival_delayed_PHX; arrival_delayed_SEA;</code></pre>
+<pre><code>##   avg_delay min_delay max_delay       sd total
+## 1      89.5        62       117 38.89087     2</code></pre>
+<pre><code>##   avg_delay min_delay max_delay       sd total
+## 1     115.5       102       129 19.09188     2</code></pre>
+<pre><code>##   avg_delay min_delay max_delay       sd total
+## 1      89.5        62       117 38.89087     2</code></pre>
+<pre><code>##   avg_delay min_delay max_delay      sd total
+## 1     213.5        12       415 284.964     2</code></pre>
+<pre><code>##   avg_delay min_delay max_delay       sd total
+## 1       183        61       305 172.5341     2</code></pre>
 <pre class="r"><code>arrival_delayed_ALASKA_all &lt;- arrival_delayed_ALASKA %&gt;% 
   gather(arrival_delayed_ALASKA, all_cities_delayed, Los.Angeles, San.Diego, San.Francisco, Phoenix, Seattle)
 
 arrival_delayed_AM_WEST_all &lt;- arrival_delayed_AM_WEST %&gt;% 
-  gather(arrival_delayed_ALASKA, all_cities_delayed, Los.Angeles, San.Diego, San.Francisco, Phoenix, Seattle)
+  gather(arrival_delayed_AM_WEST_all, all_cities_delayed, Los.Angeles, San.Diego, San.Francisco, Phoenix, Seattle)
 
-
-arrival_delayed_AM_WEST_all %&gt;% 
+arrival_delayed_AM_WEST_all_stats &lt;- arrival_delayed_AM_WEST_all %&gt;% 
   summarise(avg_delay   = mean(all_cities_delayed), 
               min_delay = min(all_cities_delayed),
               max_delay = max(all_cities_delayed),
-              total = n())</code></pre>
-<pre><code>##   avg_delay min_delay max_delay total
-## 1     157.4        61       415     5</code></pre>
-<pre class="r"><code>arrival_delayed_ALASKA_all %&gt;% 
+              sd        = sd(all_cities_delayed),
+              sum       = sum(all_cities_delayed),
+              total     = n())
+
+arrival_delayed_ALASKA_all_stats &lt;- arrival_delayed_ALASKA_all %&gt;% 
   summarise(avg_delay   = mean(all_cities_delayed), 
               min_delay = min(all_cities_delayed),
               max_delay = max(all_cities_delayed),
-              total = n())</code></pre>
-<pre><code>##   avg_delay min_delay max_delay total
-## 1     100.2        12       305     5</code></pre>
-<pre class="r"><code>summary(arrival_delayed_ALASKA_all)</code></pre>
+              sd        = sd(all_cities_delayed),
+              sum       = sum(all_cities_delayed),
+              total     = n())
+
+summary(arrival_delayed_ALASKA_all); summary(arrival_delayed_AM_WEST_all)</code></pre>
 <pre><code>##       From      Arrival  arrival_delayed_ALASKA all_cities_delayed
 ##  ALASKA :5   delayed:5   Length:5               Min.   : 12.0     
 ##  AM WEST:0   on time:0   Class :character       1st Qu.: 20.0     
@@ -204,14 +237,18 @@ arrival_delayed_AM_WEST_all %&gt;%
 ##                                                 Mean   :100.2     
 ##                                                 3rd Qu.:102.0     
 ##                                                 Max.   :305.0</code></pre>
-<pre class="r"><code>summary(arrival_delayed_AM_WEST_all)</code></pre>
-<pre><code>##       From      Arrival  arrival_delayed_ALASKA all_cities_delayed
-##  ALASKA :0   delayed:5   Length:5               Min.   : 61.0     
-##  AM WEST:5   on time:0   Class :character       1st Qu.: 65.0     
-##                          Mode  :character       Median :117.0     
-##                                                 Mean   :157.4     
-##                                                 3rd Qu.:129.0     
-##                                                 Max.   :415.0</code></pre>
+<pre><code>##       From      Arrival  arrival_delayed_AM_WEST_all all_cities_delayed
+##  ALASKA :0   delayed:5   Length:5                    Min.   : 61.0     
+##  AM WEST:5   on time:0   Class :character            1st Qu.: 65.0     
+##                          Mode  :character            Median :117.0     
+##                                                      Mean   :157.4     
+##                                                      3rd Qu.:129.0     
+##                                                      Max.   :415.0</code></pre>
+<pre class="r"><code>print(arrival_delayed_AM_WEST_all_stats); print(arrival_delayed_ALASKA_all_stats)</code></pre>
+<pre><code>##   avg_delay min_delay max_delay       sd sum total
+## 1     157.4        61       415 147.1625 787     5</code></pre>
+<pre><code>##   avg_delay min_delay max_delay       sd sum total
+## 1     100.2        12       305 120.0175 501     5</code></pre>
 
 
 
