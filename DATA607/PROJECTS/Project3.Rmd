@@ -1,0 +1,66 @@
+---
+title: "Project3"
+author: "alexander"
+date: "10/2/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#devtools::install_github("rstudio/sparklyr")
+devtools::install_github("hadley/devtools") ## for latest version
+devtools::install_github("rstudio/sparklyr")
+devtools::install_github("tidyverse/dplyr")
+
+
+#install.packages("devtools")
+#install.packages("ngram")
+#install.packages("reshape")
+
+#devtools::install_github("bnosac/RDRPOSTagger")
+#devtools::install_github("ropensci/tokenizers")
+
+```
+
+
+What is Bob Ross' Favorite Thing to Paint, and Why?
+
+Is it happy little trees? Add Poll
+
+Is there a correlation between tagged objects and episode titles?
+
+is there a preference to in respects to POS?
+
+#shiny
+```{r read-csv}
+bobFloss <- "https://raw.githubusercontent.com/fivethirtyeight/data/master/bob-ross/elements-by-episode.csv"
+episodes <- read.csv(bobFloss, header = TRUE, sep = ",")
+head(episodes)
+```
+```{r wordcount}
+require(dplyr)
+episodeList <- episodes$TITLE %>%
+  na.omit() %>%
+  tolower() %>%
+  strsplit(split = "[[:space:]]") %>% # or strsplit(split = "\\W") 
+  unlist() %>%
+  table() %>%
+  sort(decreasing = TRUE)
+
+head(episodeList)
+mutate(episodeList, displ_l = disp)
+#mutate ^^
+#remove prepositions and quotations
+
+#
+```
+```{r pos}
+# devtools::install_github("bnosac/RDRPOSTagger")
+# devtools::install_github("ropensci/tokenizers")
+library("RDRPOSTagger")
+library("tokenizers")
+```
+
+```{r sparklyr}
+
+```

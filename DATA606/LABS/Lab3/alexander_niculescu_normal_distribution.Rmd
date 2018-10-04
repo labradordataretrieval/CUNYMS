@@ -107,7 +107,14 @@ the histogram function: `ylim = c(0, 0.06)`.
 
 2.  Based on the this plot, does it appear that the data follow a nearly normal 
     distribution?
+It appears to be, but there's no way to tell without doing z tests to make sure 68, 95, and 97 for 1,2,3 sd's respctively.
 
+```{r hist-height-ylim, eval=TRUE}
+hist(fdims$hgt, probability = TRUE, ylim = c(0, 0.06))
+x <- 140:190
+y <- dnorm(x = x, mean = fhgtmean, sd = fhgtsd)
+lines(x = x, y = y, col = "blue")
+```
 
 ## Evaluating the normal distribution
 
@@ -147,6 +154,13 @@ as well as its normal probability plot.
 3.  Make a normal probability plot of `sim_norm`.  Do all of the points fall on 
     the line?  How does this plot compare to the probability plot for the real 
     data?
+    
+No, but it looks smoother than the Q-Q plot sans rnorm.  Stil waiting to see the stats!  The human eye
+is prone to errors.
+```{r sim_norm-prob-plot}
+qqnorm(sim_norm)
+qqline(sim_norm)
+```
 
 Even better than comparing the original plot to a single plot generated from a 
 normal distribution is to compare it to many more plots using the following 
@@ -159,11 +173,20 @@ qqnormsim(fdims$hgt)
 4.  Does the normal probability plot for `fdims$hgt` look similar to the plots 
     created for the simulated data?  That is, do plots provide evidence that the
     female heights are nearly normal?
+Yes, not sure how many samples need to be removed to programatically prove normalness.
 
 5.  Using the same technique, determine whether or not female weights appear to 
     come from a normal distribution.
-
+Yes.  
+```{r qqnormism-female-weight, eval=TRUE}
+qqnormsim(fdims$wgt)
+```
 ## Normal probabilities
+```{r qqnorm-female-weight}
+qqnorm(fdims$wgt)
+qqline(fdims$wgt)
+```
+When looking closer, I see a tighter grouping between -1sd and 1sd, and a uniform flare-out.  I also don't see any values outside of 3sd's on either models.
 
 Okay, so now you have a slew of tools to judge whether or not a variable is 
 normally distributed.  Why should we care?
@@ -209,7 +232,26 @@ theoretical probabilities will be.
     those probabilities using both the theoretical normal distribution as well 
     as the empirical distribution (four probabilities in all).  Which variable,
     height or weight, had a closer agreement between the two methods?
+    
+    *Question: So will the theoretical P be equivalent if the function is a normal?
+    1. Do we uniformally remove values from either tail until we get the T(P) == P(norm)? 
+    2. Should we select a value from each sd slice and then look at various T(P) and P(norms) for each quantile?
+      i.e. q = mean, q = 182, q = 165, q = 140, q = 190
+```{r pnorm-evals-height-vs-weight, eval=TRUE}
+#female-height
+heightEval <- 1 - pnorm(q = 182, mean = fhgtmean, sd = fhgtsd) - sum(fdims$hgt > 182) / length(fdims$hgt)
 
+#before getting weight, I wanted to check the means
+fwgtmean <- mean(fdims$wgt)
+fwgtsd   <- sd(fdims$wgt)
+#female-weight
+weightEval <- 1 - pnorm(q = 65, mean = fwgtmean, sd = fwgtsd) - sum(fdims$wgt > 65) / length(fdims$wgt)
+
+cat("height value: ", heightEval, "weight value: ", weightEval)
+abs(heightEval - weightEval)
+```
+
+Height has a much closer approx value, to the third decimal.  And the Weight is only to the second.
 * * *
 
 ## On Your Own
@@ -220,6 +262,41 @@ theoretical probabilities will be.
     (first subtract the mean, then divide by the standard deviation), so the 
     units won't be of any help.  If you are uncertain based on these figures, 
     generate the plots in R to check.
+```{r qqnorm-pelvic-elbow-age-chest}
+bii.dimean <- mean(fdims$bii.di)
+bii.disd   <- sd(fdims$bii.di)
+
+hist(fdims$bii.di, main = "Female Height Chart", xlab = "Height cm", ylab = "number of people")
+
+
+elb.dimean <- mean(fdims$elb.di)
+elb.disd   <- sd(fdims$elb.di)
+
+age <- mean(fdims$age)
+age <- sd(fdims$age)
+
+che.demean <- mean(fdims$che.de)
+che.desd   <- sd(fdims$che.de)
+
+```
+
+```{r bii.di-histogram-qqnorm}
+qqnorm(fdims$bii.di)
+qqline(fdims$bii.di)
+#B
+
+qqnorm(fdims$elb.di)
+qqline(fdims$elb.di)
+#C
+
+qqnorm(fdims$age)
+qqline(fdims$age)
+#D
+
+qqnorm(fdims$che.de)
+qqline(fdims$che.de)
+#A
+```
 
     **a.** The histogram for female biiliac (pelvic) diameter (`bii.di`) belongs
     to normal probability plot letter ____.

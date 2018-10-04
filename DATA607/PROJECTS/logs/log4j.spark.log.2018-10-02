@@ -1,0 +1,367 @@
+18/10/02 14:25:20 INFO SparkContext: Running Spark version 2.1.0
+18/10/02 14:25:20 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+18/10/02 14:25:20 INFO SecurityManager: Changing view acls to: alejandro
+18/10/02 14:25:20 INFO SecurityManager: Changing modify acls to: alejandro
+18/10/02 14:25:20 INFO SecurityManager: Changing view acls groups to: 
+18/10/02 14:25:20 INFO SecurityManager: Changing modify acls groups to: 
+18/10/02 14:25:20 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(alejandro); groups with view permissions: Set(); users  with modify permissions: Set(alejandro); groups with modify permissions: Set()
+18/10/02 14:25:21 INFO Utils: Successfully started service 'sparkDriver' on port 59071.
+18/10/02 14:25:21 INFO SparkEnv: Registering MapOutputTracker
+18/10/02 14:25:21 INFO SparkEnv: Registering BlockManagerMaster
+18/10/02 14:25:21 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+18/10/02 14:25:21 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+18/10/02 14:25:21 INFO DiskBlockManager: Created local directory at /private/var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/blockmgr-751aa6bb-3087-4c31-b56b-456781a34785
+18/10/02 14:25:21 INFO MemoryStore: MemoryStore started with capacity 366.3 MB
+18/10/02 14:25:21 INFO SparkEnv: Registering OutputCommitCoordinator
+18/10/02 14:25:21 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+18/10/02 14:25:21 INFO SparkUI: Bound SparkUI to 127.0.0.1, and started at http://127.0.0.1:4040
+18/10/02 14:25:21 INFO SparkContext: Added JAR file:/Library/Frameworks/R.framework/Versions/3.5/Resources/library/sparklyr/java/sparklyr-2.1-2.11.jar at spark://127.0.0.1:59071/jars/sparklyr-2.1-2.11.jar with timestamp 1538515521572
+18/10/02 14:25:21 INFO Executor: Starting executor ID driver on host localhost
+18/10/02 14:25:21 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 59072.
+18/10/02 14:25:21 INFO NettyBlockTransferService: Server created on 127.0.0.1:59072
+18/10/02 14:25:21 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+18/10/02 14:25:21 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 127.0.0.1, 59072, None)
+18/10/02 14:25:21 INFO BlockManagerMasterEndpoint: Registering block manager 127.0.0.1:59072 with 366.3 MB RAM, BlockManagerId(driver, 127.0.0.1, 59072, None)
+18/10/02 14:25:21 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 127.0.0.1, 59072, None)
+18/10/02 14:25:21 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 127.0.0.1, 59072, None)
+18/10/02 14:25:22 WARN SparkContext: Using an existing SparkContext; some configuration may not take effect.
+18/10/02 14:25:22 INFO SharedState: Warehouse path is 'file:/Users/alejandro/Documents/R/CUNYMS/DATA607/PROJECTS/spark-warehouse'.
+18/10/02 14:25:22 INFO HiveUtils: Initializing HiveMetastoreConnection version 1.2.1 using Spark classes.
+18/10/02 14:25:23 INFO HiveMetaStore: 0: Opening raw store with implemenation class:org.apache.hadoop.hive.metastore.ObjectStore
+18/10/02 14:25:23 INFO ObjectStore: ObjectStore, initialize called
+18/10/02 14:25:23 INFO Persistence: Property hive.metastore.integral.jdo.pushdown unknown - will be ignored
+18/10/02 14:25:23 INFO Persistence: Property datanucleus.cache.level2 unknown - will be ignored
+18/10/02 14:25:25 INFO ObjectStore: Setting MetaStore object pin classes with hive.metastore.cache.pinobjtypes="Table,StorageDescriptor,SerDeInfo,Partition,Database,Type,FieldSchema,Order"
+18/10/02 14:25:26 INFO Datastore: The class "org.apache.hadoop.hive.metastore.model.MFieldSchema" is tagged as "embedded-only" so does not have its own datastore table.
+18/10/02 14:25:26 INFO Datastore: The class "org.apache.hadoop.hive.metastore.model.MOrder" is tagged as "embedded-only" so does not have its own datastore table.
+18/10/02 14:25:27 INFO Datastore: The class "org.apache.hadoop.hive.metastore.model.MFieldSchema" is tagged as "embedded-only" so does not have its own datastore table.
+18/10/02 14:25:27 INFO Datastore: The class "org.apache.hadoop.hive.metastore.model.MOrder" is tagged as "embedded-only" so does not have its own datastore table.
+18/10/02 14:25:27 INFO MetaStoreDirectSql: Using direct SQL, underlying DB is DERBY
+18/10/02 14:25:27 INFO ObjectStore: Initialized ObjectStore
+18/10/02 14:25:27 WARN ObjectStore: Version information not found in metastore. hive.metastore.schema.verification is not enabled so recording the schema version 1.2.0
+18/10/02 14:25:27 WARN ObjectStore: Failed to get database default, returning NoSuchObjectException
+18/10/02 14:25:27 INFO HiveMetaStore: Added admin role in metastore
+18/10/02 14:25:27 INFO HiveMetaStore: Added public role in metastore
+18/10/02 14:25:28 INFO HiveMetaStore: No user is added in admin role, since config is empty
+18/10/02 14:25:28 INFO HiveMetaStore: 0: get_all_databases
+18/10/02 14:25:28 INFO audit: ugi=alejandro	ip=unknown-ip-addr	cmd=get_all_databases	
+18/10/02 14:25:28 INFO HiveMetaStore: 0: get_functions: db=default pat=*
+18/10/02 14:25:28 INFO audit: ugi=alejandro	ip=unknown-ip-addr	cmd=get_functions: db=default pat=*	
+18/10/02 14:25:28 INFO Datastore: The class "org.apache.hadoop.hive.metastore.model.MResourceUri" is tagged as "embedded-only" so does not have its own datastore table.
+18/10/02 14:25:28 INFO SessionState: Created HDFS directory: /tmp/hive/alejandro
+18/10/02 14:25:28 INFO SessionState: Created local directory: /var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/alejandro
+18/10/02 14:25:28 INFO SessionState: Created local directory: /var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/2144eb98-a981-4019-8980-2c9a48ae7680_resources
+18/10/02 14:25:28 INFO SessionState: Created HDFS directory: /tmp/hive/alejandro/2144eb98-a981-4019-8980-2c9a48ae7680
+18/10/02 14:25:28 INFO SessionState: Created local directory: /var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/alejandro/2144eb98-a981-4019-8980-2c9a48ae7680
+18/10/02 14:25:28 INFO SessionState: Created HDFS directory: /tmp/hive/alejandro/2144eb98-a981-4019-8980-2c9a48ae7680/_tmp_space.db
+18/10/02 14:25:28 INFO HiveClientImpl: Warehouse location for Hive client (version 1.2.1) is file:/Users/alejandro/Documents/R/CUNYMS/DATA607/PROJECTS/spark-warehouse
+18/10/02 14:25:28 INFO HiveMetaStore: 0: get_database: default
+18/10/02 14:25:28 INFO audit: ugi=alejandro	ip=unknown-ip-addr	cmd=get_database: default	
+18/10/02 14:25:28 INFO HiveMetaStore: 0: get_database: global_temp
+18/10/02 14:25:28 INFO audit: ugi=alejandro	ip=unknown-ip-addr	cmd=get_database: global_temp	
+18/10/02 14:25:28 WARN ObjectStore: Failed to get database global_temp, returning NoSuchObjectException
+18/10/02 14:25:28 INFO SparkSqlParser: Parsing command: SHOW TABLES
+18/10/02 14:25:31 INFO HiveMetaStore: 0: get_database: default
+18/10/02 14:25:31 INFO audit: ugi=alejandro	ip=unknown-ip-addr	cmd=get_database: default	
+18/10/02 14:25:31 INFO HiveMetaStore: 0: get_database: default
+18/10/02 14:25:31 INFO audit: ugi=alejandro	ip=unknown-ip-addr	cmd=get_database: default	
+18/10/02 14:25:31 INFO HiveMetaStore: 0: get_tables: db=default pat=*
+18/10/02 14:25:31 INFO audit: ugi=alejandro	ip=unknown-ip-addr	cmd=get_tables: db=default pat=*	
+18/10/02 14:38:38 INFO SparkContext: Running Spark version 2.1.0
+18/10/02 14:38:39 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+18/10/02 14:38:39 INFO SecurityManager: Changing view acls to: alejandro
+18/10/02 14:38:39 INFO SecurityManager: Changing modify acls to: alejandro
+18/10/02 14:38:39 INFO SecurityManager: Changing view acls groups to: 
+18/10/02 14:38:39 INFO SecurityManager: Changing modify acls groups to: 
+18/10/02 14:38:39 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(alejandro); groups with view permissions: Set(); users  with modify permissions: Set(alejandro); groups with modify permissions: Set()
+18/10/02 14:38:39 INFO Utils: Successfully started service 'sparkDriver' on port 59354.
+18/10/02 14:38:39 INFO SparkEnv: Registering MapOutputTracker
+18/10/02 14:38:39 INFO SparkEnv: Registering BlockManagerMaster
+18/10/02 14:38:39 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+18/10/02 14:38:39 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+18/10/02 14:38:39 INFO DiskBlockManager: Created local directory at /private/var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/blockmgr-3fa85a2d-de14-4b45-807c-51b2f11b34cd
+18/10/02 14:38:39 INFO MemoryStore: MemoryStore started with capacity 366.3 MB
+18/10/02 14:38:39 INFO SparkEnv: Registering OutputCommitCoordinator
+18/10/02 14:38:39 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+18/10/02 14:38:39 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+18/10/02 14:38:39 INFO SparkUI: Bound SparkUI to 127.0.0.1, and started at http://127.0.0.1:4041
+18/10/02 14:38:39 INFO SparkContext: Added JAR file:/Library/Frameworks/R.framework/Versions/3.5/Resources/library/sparklyr/java/sparklyr-2.1-2.11.jar at spark://127.0.0.1:59354/jars/sparklyr-2.1-2.11.jar with timestamp 1538516319758
+18/10/02 14:38:39 INFO Executor: Starting executor ID driver on host localhost
+18/10/02 14:38:39 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 59355.
+18/10/02 14:38:39 INFO NettyBlockTransferService: Server created on 127.0.0.1:59355
+18/10/02 14:38:39 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+18/10/02 14:38:39 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 127.0.0.1, 59355, None)
+18/10/02 14:38:39 INFO BlockManagerMasterEndpoint: Registering block manager 127.0.0.1:59355 with 366.3 MB RAM, BlockManagerId(driver, 127.0.0.1, 59355, None)
+18/10/02 14:38:39 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 127.0.0.1, 59355, None)
+18/10/02 14:38:39 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 127.0.0.1, 59355, None)
+18/10/02 14:38:40 WARN SparkContext: Using an existing SparkContext; some configuration may not take effect.
+18/10/02 14:38:40 INFO SharedState: Warehouse path is 'file:/Users/alejandro/Documents/R/CUNYMS/DATA607/PROJECTS/spark-warehouse'.
+18/10/02 14:38:40 INFO HiveUtils: Initializing HiveMetastoreConnection version 1.2.1 using Spark classes.
+18/10/02 14:38:41 INFO HiveMetaStore: 0: Opening raw store with implemenation class:org.apache.hadoop.hive.metastore.ObjectStore
+18/10/02 14:38:41 INFO ObjectStore: ObjectStore, initialize called
+18/10/02 14:38:41 INFO Persistence: Property hive.metastore.integral.jdo.pushdown unknown - will be ignored
+18/10/02 14:38:41 INFO Persistence: Property datanucleus.cache.level2 unknown - will be ignored
+18/10/02 14:38:43 INFO ObjectStore: Setting MetaStore object pin classes with hive.metastore.cache.pinobjtypes="Table,StorageDescriptor,SerDeInfo,Partition,Database,Type,FieldSchema,Order"
+18/10/02 14:38:44 INFO Datastore: The class "org.apache.hadoop.hive.metastore.model.MFieldSchema" is tagged as "embedded-only" so does not have its own datastore table.
+18/10/02 14:38:44 INFO Datastore: The class "org.apache.hadoop.hive.metastore.model.MOrder" is tagged as "embedded-only" so does not have its own datastore table.
+18/10/02 14:38:45 INFO Datastore: The class "org.apache.hadoop.hive.metastore.model.MFieldSchema" is tagged as "embedded-only" so does not have its own datastore table.
+18/10/02 14:38:45 INFO Datastore: The class "org.apache.hadoop.hive.metastore.model.MOrder" is tagged as "embedded-only" so does not have its own datastore table.
+18/10/02 14:38:45 INFO MetaStoreDirectSql: Using direct SQL, underlying DB is DERBY
+18/10/02 14:38:45 INFO ObjectStore: Initialized ObjectStore
+18/10/02 14:38:45 WARN ObjectStore: Version information not found in metastore. hive.metastore.schema.verification is not enabled so recording the schema version 1.2.0
+18/10/02 14:38:45 WARN ObjectStore: Failed to get database default, returning NoSuchObjectException
+18/10/02 14:38:45 INFO HiveMetaStore: Added admin role in metastore
+18/10/02 14:38:45 INFO HiveMetaStore: Added public role in metastore
+18/10/02 14:38:45 INFO HiveMetaStore: No user is added in admin role, since config is empty
+18/10/02 14:38:46 INFO HiveMetaStore: 0: get_all_databases
+18/10/02 14:38:46 INFO audit: ugi=alejandro	ip=unknown-ip-addr	cmd=get_all_databases	
+18/10/02 14:38:46 INFO HiveMetaStore: 0: get_functions: db=default pat=*
+18/10/02 14:38:46 INFO audit: ugi=alejandro	ip=unknown-ip-addr	cmd=get_functions: db=default pat=*	
+18/10/02 14:38:46 INFO Datastore: The class "org.apache.hadoop.hive.metastore.model.MResourceUri" is tagged as "embedded-only" so does not have its own datastore table.
+18/10/02 14:38:46 INFO SessionState: Created local directory: /var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/0c92837d-303e-4c46-9314-67323d9ea96e_resources
+18/10/02 14:38:46 INFO SessionState: Created HDFS directory: /tmp/hive/alejandro/0c92837d-303e-4c46-9314-67323d9ea96e
+18/10/02 14:38:46 INFO SessionState: Created local directory: /var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/alejandro/0c92837d-303e-4c46-9314-67323d9ea96e
+18/10/02 14:38:46 INFO SessionState: Created HDFS directory: /tmp/hive/alejandro/0c92837d-303e-4c46-9314-67323d9ea96e/_tmp_space.db
+18/10/02 14:38:46 INFO HiveClientImpl: Warehouse location for Hive client (version 1.2.1) is file:/Users/alejandro/Documents/R/CUNYMS/DATA607/PROJECTS/spark-warehouse
+18/10/02 14:38:46 INFO HiveMetaStore: 0: get_database: default
+18/10/02 14:38:46 INFO audit: ugi=alejandro	ip=unknown-ip-addr	cmd=get_database: default	
+18/10/02 14:38:46 INFO HiveMetaStore: 0: get_database: global_temp
+18/10/02 14:38:46 INFO audit: ugi=alejandro	ip=unknown-ip-addr	cmd=get_database: global_temp	
+18/10/02 14:38:46 WARN ObjectStore: Failed to get database global_temp, returning NoSuchObjectException
+18/10/02 14:38:46 INFO SparkSqlParser: Parsing command: SHOW TABLES
+18/10/02 14:38:48 INFO HiveMetaStore: 0: get_database: default
+18/10/02 14:38:48 INFO audit: ugi=alejandro	ip=unknown-ip-addr	cmd=get_database: default	
+18/10/02 14:38:48 INFO HiveMetaStore: 0: get_database: default
+18/10/02 14:38:48 INFO audit: ugi=alejandro	ip=unknown-ip-addr	cmd=get_database: default	
+18/10/02 14:38:48 INFO HiveMetaStore: 0: get_tables: db=default pat=*
+18/10/02 14:38:48 INFO audit: ugi=alejandro	ip=unknown-ip-addr	cmd=get_tables: db=default pat=*	
+18/10/02 14:51:50 INFO SparkContext: Invoking stop() from shutdown hook
+18/10/02 14:51:50 INFO SparkUI: Stopped Spark web UI at http://127.0.0.1:4041
+18/10/02 14:51:50 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+18/10/02 14:51:50 INFO MemoryStore: MemoryStore cleared
+18/10/02 14:51:50 INFO BlockManager: BlockManager stopped
+18/10/02 14:51:50 INFO BlockManagerMaster: BlockManagerMaster stopped
+18/10/02 14:51:50 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+18/10/02 14:51:50 INFO SparkContext: Successfully stopped SparkContext
+18/10/02 14:51:50 INFO ShutdownHookManager: Shutdown hook called
+18/10/02 14:51:50 INFO ShutdownHookManager: Deleting directory /private/var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/spark-518bcaee-908d-4a30-929c-567bfb573297
+18/10/02 14:51:50 INFO SparkContext: Invoking stop() from shutdown hook
+18/10/02 14:51:50 INFO SparkUI: Stopped Spark web UI at http://127.0.0.1:4040
+18/10/02 14:51:50 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+18/10/02 14:51:50 INFO MemoryStore: MemoryStore cleared
+18/10/02 14:51:50 INFO BlockManager: BlockManager stopped
+18/10/02 14:51:50 INFO BlockManagerMaster: BlockManagerMaster stopped
+18/10/02 14:51:50 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+18/10/02 14:51:50 INFO SparkContext: Successfully stopped SparkContext
+18/10/02 14:51:50 INFO ShutdownHookManager: Shutdown hook called
+18/10/02 14:51:50 INFO ShutdownHookManager: Deleting directory /private/var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/spark-c4d9842f-4b1b-462c-9544-2342c1a0353b
+18/10/02 14:52:37 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+18/10/02 14:52:38 INFO SparkContext: Running Spark version 2.3.0
+18/10/02 14:52:38 INFO SparkContext: Submitted application: sparklyr
+18/10/02 14:52:38 INFO SecurityManager: Changing view acls to: alejandro
+18/10/02 14:52:38 INFO SecurityManager: Changing modify acls to: alejandro
+18/10/02 14:52:38 INFO SecurityManager: Changing view acls groups to: 
+18/10/02 14:52:38 INFO SecurityManager: Changing modify acls groups to: 
+18/10/02 14:52:38 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(alejandro); groups with view permissions: Set(); users  with modify permissions: Set(alejandro); groups with modify permissions: Set()
+18/10/02 14:52:38 INFO Utils: Successfully started service 'sparkDriver' on port 59883.
+18/10/02 14:52:38 INFO SparkEnv: Registering MapOutputTracker
+18/10/02 14:52:38 INFO SparkEnv: Registering BlockManagerMaster
+18/10/02 14:52:38 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+18/10/02 14:52:38 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+18/10/02 14:52:38 INFO DiskBlockManager: Created local directory at /private/var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/blockmgr-cd7f13d5-cf65-4836-ad31-0a272f616294
+18/10/02 14:52:38 INFO MemoryStore: MemoryStore started with capacity 366.3 MB
+18/10/02 14:52:38 INFO SparkEnv: Registering OutputCommitCoordinator
+18/10/02 14:52:38 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+18/10/02 14:52:38 INFO SparkUI: Bound SparkUI to 127.0.0.1, and started at http://localhost:4040
+18/10/02 14:52:38 INFO SparkContext: Added JAR file:/Library/Frameworks/R.framework/Versions/3.5/Resources/library/sparklyr/java/sparklyr-2.3-2.11.jar at spark://localhost:59883/jars/sparklyr-2.3-2.11.jar with timestamp 1538517158875
+18/10/02 14:52:38 INFO Executor: Starting executor ID driver on host localhost
+18/10/02 14:52:38 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 59884.
+18/10/02 14:52:38 INFO NettyBlockTransferService: Server created on localhost:59884
+18/10/02 14:52:38 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+18/10/02 14:52:38 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, localhost, 59884, None)
+18/10/02 14:52:38 INFO BlockManagerMasterEndpoint: Registering block manager localhost:59884 with 366.3 MB RAM, BlockManagerId(driver, localhost, 59884, None)
+18/10/02 14:52:38 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, localhost, 59884, None)
+18/10/02 14:52:38 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, localhost, 59884, None)
+18/10/02 14:52:39 WARN SparkContext: Using an existing SparkContext; some configuration may not take effect.
+18/10/02 14:52:39 INFO SharedState: loading hive config file: file:/Users/alejandro/spark/spark-2.3.0-bin-hadoop2.7/conf/hive-site.xml
+18/10/02 14:52:39 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/Users/alejandro/Documents/R/CUNYMS/DATA607/PROJECTS/spark-warehouse').
+18/10/02 14:52:39 INFO SharedState: Warehouse path is 'file:/Users/alejandro/Documents/R/CUNYMS/DATA607/PROJECTS/spark-warehouse'.
+18/10/02 14:52:40 INFO StateStoreCoordinatorRef: Registered StateStoreCoordinator endpoint
+18/10/02 14:52:42 INFO CodeGenerator: Code generated in 210.17767 ms
+18/10/02 15:01:57 INFO SparkContext: Invoking stop() from shutdown hook
+18/10/02 15:01:57 INFO SparkUI: Stopped Spark web UI at http://localhost:4040
+18/10/02 15:01:57 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+18/10/02 15:01:57 INFO MemoryStore: MemoryStore cleared
+18/10/02 15:01:57 INFO BlockManager: BlockManager stopped
+18/10/02 15:01:57 INFO BlockManagerMaster: BlockManagerMaster stopped
+18/10/02 15:01:57 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+18/10/02 15:01:57 INFO SparkContext: Successfully stopped SparkContext
+18/10/02 15:01:57 INFO ShutdownHookManager: Shutdown hook called
+18/10/02 15:01:57 INFO ShutdownHookManager: Deleting directory /private/var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/spark-4742021b-d883-41a5-80e2-da2fc35fdd21
+18/10/02 15:01:57 INFO ShutdownHookManager: Deleting directory /private/var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/spark-a92aff75-fa1e-45b8-9ea0-c0a4d87ffe49
+18/10/02 15:01:59 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+18/10/02 15:02:05 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+18/10/02 15:02:06 INFO SparkContext: Running Spark version 2.3.0
+18/10/02 15:02:06 INFO SparkContext: Submitted application: sparklyr
+18/10/02 15:02:06 INFO SecurityManager: Changing view acls to: alejandro
+18/10/02 15:02:06 INFO SecurityManager: Changing modify acls to: alejandro
+18/10/02 15:02:06 INFO SecurityManager: Changing view acls groups to: 
+18/10/02 15:02:06 INFO SecurityManager: Changing modify acls groups to: 
+18/10/02 15:02:06 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(alejandro); groups with view permissions: Set(); users  with modify permissions: Set(alejandro); groups with modify permissions: Set()
+18/10/02 15:02:06 INFO Utils: Successfully started service 'sparkDriver' on port 60779.
+18/10/02 15:02:06 INFO SparkEnv: Registering MapOutputTracker
+18/10/02 15:02:06 INFO SparkEnv: Registering BlockManagerMaster
+18/10/02 15:02:06 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+18/10/02 15:02:06 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+18/10/02 15:02:06 INFO DiskBlockManager: Created local directory at /private/var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/blockmgr-0c454472-df75-40ff-88b4-6be39e2fa910
+18/10/02 15:02:06 INFO MemoryStore: MemoryStore started with capacity 366.3 MB
+18/10/02 15:02:06 INFO SparkEnv: Registering OutputCommitCoordinator
+18/10/02 15:02:06 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+18/10/02 15:02:06 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+18/10/02 15:02:06 INFO SparkUI: Bound SparkUI to 127.0.0.1, and started at http://localhost:4041
+18/10/02 15:02:06 INFO SparkContext: Added JAR file:/Library/Frameworks/R.framework/Versions/3.5/Resources/library/sparklyr/java/sparklyr-2.3-2.11.jar at spark://localhost:60779/jars/sparklyr-2.3-2.11.jar with timestamp 1538517726587
+18/10/02 15:02:06 INFO Executor: Starting executor ID driver on host localhost
+18/10/02 15:02:06 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 60780.
+18/10/02 15:02:06 INFO NettyBlockTransferService: Server created on localhost:60780
+18/10/02 15:02:06 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+18/10/02 15:02:06 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, localhost, 60780, None)
+18/10/02 15:02:06 INFO BlockManagerMasterEndpoint: Registering block manager localhost:60780 with 366.3 MB RAM, BlockManagerId(driver, localhost, 60780, None)
+18/10/02 15:02:06 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, localhost, 60780, None)
+18/10/02 15:02:06 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, localhost, 60780, None)
+18/10/02 15:02:07 WARN SparkContext: Using an existing SparkContext; some configuration may not take effect.
+18/10/02 15:02:07 INFO SharedState: loading hive config file: file:/Users/alejandro/spark/spark-2.3.0-bin-hadoop2.7/conf/hive-site.xml
+18/10/02 15:02:07 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/Users/alejandro/Documents/R/CUNYMS/DATA607/PROJECTS/spark-warehouse/').
+18/10/02 15:02:07 INFO SharedState: Warehouse path is 'file:/Users/alejandro/Documents/R/CUNYMS/DATA607/PROJECTS/spark-warehouse/'.
+18/10/02 15:02:07 INFO StateStoreCoordinatorRef: Registered StateStoreCoordinator endpoint
+18/10/02 15:02:10 INFO CodeGenerator: Code generated in 175.080975 ms
+18/10/02 15:02:10 WARN FileStreamSink: Error while looking for metadata directory.
+18/10/02 15:02:10 ERROR RBackendHandler: load on 6 failed
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.spark.api.r.RBackendHandler.handleMethodCall(RBackendHandler.scala:167)
+	at org.apache.spark.api.r.RBackendHandler.channelRead0(RBackendHandler.scala:108)
+	at org.apache.spark.api.r.RBackendHandler.channelRead0(RBackendHandler.scala:40)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:286)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1359)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:935)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:138)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: No FileSystem for scheme: https
+	at org.apache.hadoop.fs.FileSystem.getFileSystemClass(FileSystem.java:2660)
+	at org.apache.hadoop.fs.FileSystem.createFileSystem(FileSystem.java:2667)
+	at org.apache.hadoop.fs.FileSystem.access$200(FileSystem.java:94)
+	at org.apache.hadoop.fs.FileSystem$Cache.getInternal(FileSystem.java:2703)
+	at org.apache.hadoop.fs.FileSystem$Cache.get(FileSystem.java:2685)
+	at org.apache.hadoop.fs.FileSystem.get(FileSystem.java:373)
+	at org.apache.hadoop.fs.Path.getFileSystem(Path.java:295)
+	at org.apache.spark.sql.execution.datasources.DataSource$.org$apache$spark$sql$execution$datasources$DataSource$$checkAndGlobPathIfNecessary(DataSource.scala:705)
+	at org.apache.spark.sql.execution.datasources.DataSource$$anonfun$15.apply(DataSource.scala:389)
+	at org.apache.spark.sql.execution.datasources.DataSource$$anonfun$15.apply(DataSource.scala:389)
+	at scala.collection.TraversableLike$$anonfun$flatMap$1.apply(TraversableLike.scala:241)
+	at scala.collection.TraversableLike$$anonfun$flatMap$1.apply(TraversableLike.scala:241)
+	at scala.collection.immutable.List.foreach(List.scala:381)
+	at scala.collection.TraversableLike$class.flatMap(TraversableLike.scala:241)
+	at scala.collection.immutable.List.flatMap(List.scala:344)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:388)
+	at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:239)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:227)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:164)
+	... 36 more
+18/10/02 15:02:25 INFO SparkContext: Invoking stop() from shutdown hook
+18/10/02 15:02:25 INFO SparkUI: Stopped Spark web UI at http://localhost:4041
+18/10/02 15:02:25 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+18/10/02 15:02:26 INFO MemoryStore: MemoryStore cleared
+18/10/02 15:02:26 INFO BlockManager: BlockManager stopped
+18/10/02 15:02:26 INFO BlockManagerMaster: BlockManagerMaster stopped
+18/10/02 15:02:26 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+18/10/02 15:02:26 INFO SparkContext: Successfully stopped SparkContext
+18/10/02 15:02:26 INFO ShutdownHookManager: Shutdown hook called
+18/10/02 15:02:26 INFO ShutdownHookManager: Deleting directory /private/var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/spark-f390bb5f-5c8e-44a1-bdc2-db821889110a
+18/10/02 15:02:26 INFO ShutdownHookManager: Deleting directory /private/var/folders/63/4krzwb1j2hq8c0t6t3tpf2nm0000gn/T/spark-86bf8aae-31b6-442d-ad4b-437c9b66955f
+18/10/02 15:02:43 WARN FileStreamSink: Error while looking for metadata directory.
+18/10/02 15:02:43 ERROR RBackendHandler: load on 10 failed
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.spark.api.r.RBackendHandler.handleMethodCall(RBackendHandler.scala:167)
+	at org.apache.spark.api.r.RBackendHandler.channelRead0(RBackendHandler.scala:108)
+	at org.apache.spark.api.r.RBackendHandler.channelRead0(RBackendHandler.scala:40)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:286)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1359)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:935)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:138)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: No FileSystem for scheme: https
+	at org.apache.hadoop.fs.FileSystem.getFileSystemClass(FileSystem.java:2660)
+	at org.apache.hadoop.fs.FileSystem.createFileSystem(FileSystem.java:2667)
+	at org.apache.hadoop.fs.FileSystem.access$200(FileSystem.java:94)
+	at org.apache.hadoop.fs.FileSystem$Cache.getInternal(FileSystem.java:2703)
+	at org.apache.hadoop.fs.FileSystem$Cache.get(FileSystem.java:2685)
+	at org.apache.hadoop.fs.FileSystem.get(FileSystem.java:373)
+	at org.apache.hadoop.fs.Path.getFileSystem(Path.java:295)
+	at org.apache.spark.sql.execution.datasources.DataSource$.org$apache$spark$sql$execution$datasources$DataSource$$checkAndGlobPathIfNecessary(DataSource.scala:705)
+	at org.apache.spark.sql.execution.datasources.DataSource$$anonfun$15.apply(DataSource.scala:389)
+	at org.apache.spark.sql.execution.datasources.DataSource$$anonfun$15.apply(DataSource.scala:389)
+	at scala.collection.TraversableLike$$anonfun$flatMap$1.apply(TraversableLike.scala:241)
+	at scala.collection.TraversableLike$$anonfun$flatMap$1.apply(TraversableLike.scala:241)
+	at scala.collection.immutable.List.foreach(List.scala:381)
+	at scala.collection.TraversableLike$class.flatMap(TraversableLike.scala:241)
+	at scala.collection.immutable.List.flatMap(List.scala:344)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:388)
+	at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:239)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:227)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:164)
+	... 36 more
