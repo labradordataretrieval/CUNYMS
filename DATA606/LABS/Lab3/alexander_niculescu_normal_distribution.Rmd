@@ -54,7 +54,7 @@ hist(fdims$hgt,main = "Female Height Chart", xlab = "Height cm", ylab = "number 
 summary(mdims$hgt)
 summary(fdims$hgt)
 
-I would say the Male chart looks much closer to a bell curve as compared to the female chart which is heavier on the left tail.
+#I would say the Male chart looks much closer to a bell curve as compared to the female chart which is heavier on the left tail.
 ```
 ## The normal distribution
 
@@ -299,16 +299,16 @@ qqline(fdims$che.de)
 ```
 
     **a.** The histogram for female biiliac (pelvic) diameter (`bii.di`) belongs
-    to normal probability plot letter ____.
+    to normal probability plot letter B.
 
     **b.** The histogram for female elbow diameter (`elb.di`) belongs to normal 
-    probability plot letter ____.
+    probability plot letterC.
 
     **c.** The histogram for general age (`age`) belongs to normal probability 
-    plot letter ____.
+    plot letter D.
 
     **d.** The histogram for female chest depth (`che.de`) belongs to normal 
-    probability plot letter ____.
+    probability plot letter A.
 
 -   Note that normal probability plots C and D have a slight stepwise pattern.  
     Why do you think this is the case?
