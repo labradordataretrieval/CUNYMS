@@ -1,66 +1,140 @@
 ---
-title: "Project3"
-author: "alexander"
+title: "Project3: What is Bob Ross' Favorite Thing to Paint, and Why?"
+author: "alexander niculescu"
 date: "10/2/2018"
 output: html_document
 ---
 
+As an excercise in futulity, I've taken the liberty to learn dplyr, play around with Bob Ross Data, and learn more about R programming.  Coming from a mapReduce and data analytic background, my mind is predisposed to sort, count, and aggregate just about everything and the susbset of everything.
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-#devtools::install_github("rstudio/sparklyr")
-devtools::install_github("hadley/devtools") ## for latest version
-devtools::install_github("rstudio/sparklyr")
-devtools::install_github("tidyverse/dplyr")
+library(dplyr)
+library(knitr)
+library(tidyr)
 
+
+#Install openNLP
+#install.packages("openNLP")
 
 #install.packages("devtools")
 #install.packages("ngram")
 #install.packages("reshape")
 
+#devtools::install_github("rstudio/sparklyr")
+#devtools::install_github("hadley/devtools") ## for latest version
+#devtools::install_github("rstudio/sparklyr")
+#devtools::install_github("tidyverse/dplyr")
 #devtools::install_github("bnosac/RDRPOSTagger")
 #devtools::install_github("ropensci/tokenizers")
-
 ```
+Are most Bob Ross Paintings About Happy Little Trees?
 
+After reading other analyses of Bob Ross Data, I wanted to try and do something that was a little different.  There are cnn's, hidden markov chains, as well as conditional probabilities already compounded.  Below is my try at simple and new metrics.
 
-What is Bob Ross' Favorite Thing to Paint, and Why?
+As data occurs in both natural language and as feature vectors and matrices, extracting value [of a dataset] is simplest when breaking down all data into its simplest form.  Because natural language can be interpreted with respect to semantic and syntactic values, I figured I'd start the data set by understanding the columns and row features as parts of speech.  
 
-Is it happy little trees? Add Poll
+Understanding the Data:
+The Bob Ross data set has seasons, titles, and features of paintings [both singular and plural.]  The basis of many statistics are: 'given a tree in episode 4, Season 6, what is the probability another tree would be added.'However, I wanted to see what the title and raw statistics would say about the show, frequency of painted items, and tie in the 'Bob Ross loves painting happy little trees' bias to my data set.
 
-Is there a correlation between tagged objects and episode titles?
+Next, I googled:
+'how many times has Bob Ross said happy little trees?'  It looks like no one has streamed every episode, and parsed the audio for popular euphemisms...
 
-is there a preference to in respects to POS?
-
-#shiny
 ```{r read-csv}
+#loading the data
 bobFloss <- "https://raw.githubusercontent.com/fivethirtyeight/data/master/bob-ross/elements-by-episode.csv"
 episodes <- read.csv(bobFloss, header = TRUE, sep = ",")
 head(episodes)
 ```
+
+Next, I counted all the occurences of objects, regardless of episodes.  It seems as though of 403 episodes, 361 have Trees, 
+but only 160 contain mountains.  This isn't needed now, but will come up again after the POS analytics.
+```{r sum-rows}
+#sum each row to count number of objects
+summarydf <- episodes[ -c(1:2) ]
+
+summarydf <- summarydf %>% 
+  summarise_all(funs(sum)) %>%
+  gather(summarise_all(funs(sum)))
+
+names(summarydf)[names(summarydf)=="summarise_all(funs(sum))"] <- "Sum"
+
+summarydf %>% arrange(desc(value)) %>% head
+```
+Next, I cleaned the data a little for some POS tagging for episode names.  I wanted to see whether the episode titles are descriptive enough to map to objects tagged.  Of course, If I were to remove prepositions mountain, winter, and lake are the most popular words.  The data needs to be cleaned further, and some fields need to be tidied up.  I think I will use the NLP libraries with Python next.
 ```{r wordcount}
-require(dplyr)
-episodeList <- episodes$TITLE %>%
+episodeList <- data.frame(episodes$TITLE %>%
   na.omit() %>%
   tolower() %>%
   strsplit(split = "[[:space:]]") %>% # or strsplit(split = "\\W") 
   unlist() %>%
   table() %>%
-  sort(decreasing = TRUE)
+  sort(decreasing = TRUE))
+
+names(episodeList)[names(episodeList)=="."] <- "Words"
+
+#remove the " character
+episodeList$Words <- gsub("\"", "", episodeList$Words) 
+episodeList$Words <- gsub("'s", "", episodeList$Words) 
+episodeList$Words <- gsub("\'o", "", episodeList$Words) 
+episodeList$Words <- gsub("-", " ", episodeList$Words) 
 
 head(episodeList)
-mutate(episodeList, displ_l = disp)
-#mutate ^^
-#remove prepositions and quotations
-
-#
+write.csv(episodeList, file = "../DATA/episodeList.csv",row.names=FALSE)
 ```
+Lastly, I wanted to see how NLP packages work in R.  Just wanted to count up some verbs, nouns, and adjectives!
+
 ```{r pos}
 # devtools::install_github("bnosac/RDRPOSTagger")
 # devtools::install_github("ropensci/tokenizers")
-library("RDRPOSTagger")
-library("tokenizers")
+#library("RDRPOSTagger")
+#library("tokenizers")
+#library(rJava)
+library(NLP)
+library(openNLP)
+
+sent_token_annotator <- Maxent_Sent_Token_Annotator()
+word_token_annotator <- Maxent_Word_Token_Annotator()
+a2 <- annotate(episodeList$Words, list(sent_token_annotator, word_token_annotator))
+
+tagPOS <-  function(x, ...) {
+  s <- as.String(x)
+  word_token_annotator <- Maxent_Word_Token_Annotator()
+  a2 <- Annotation(1L, "sentence", 1L, nchar(s))
+  a2 <- annotate(s, word_token_annotator, a2)
+  a3 <- annotate(s, Maxent_POS_Tag_Annotator(), a2)
+  a3w <- a3[a3$type == "word"]
+  POStags <- unlist(lapply(a3w$features, `[[`, "POS"))
+  POStagged <- paste(sprintf("%s/%s", s[a3w], POStags), collapse = " ")
+  list(POStagged = POStagged, POStags = POStags)
+}
+
+tagged_str <-  tagPOS(episodeList$Words)
+
+tagged_str$POStags[10]
+f <- tagged_str$POStagged
+
+verbs       <- sapply(strsplit( tagged_str$POStagged,"[[:punct:]]*/VB.?"),function(x) sub("(^.*\\s)(\\w+$)", "\\2", x))
+nouns       <- sapply(strsplit( tagged_str$POStagged,"[[:punct:]]*/NN.?"),function(x) sub("(^.*\\s)(\\w+$)", "\\2", x))
+adjectives  <- sapply(strsplit( tagged_str$POStagged,"[[:punct:]]*/JJ.?"),function(x) sub("(^.*\\s)(\\w+$)", "\\2", x))
+
+cat(" number of nouns: ", length(nouns))
+cat(" number of verbs: ", length(verbs))
+cat(" number of adjectives: ", length(adjectives))
+write.csv(tagged_str$POStagged, file = "../DATA/POS_BobRoss.csv",row.names=FALSE)
 ```
 
-```{r sparklyr}
+*Conclusion:*
+Bob Ross Episode Titles are mostly about Winter and or Mountains.  However, most episodes contain a tree or two.  Lastly, nouns far outweigh adjectives in episode titles, so it would be nice if someone replaced some episode names with more feel-good adjectives and swapped out some winter words for 'forest' or 'happy forest' or 'vibrant trees.'
 
-```
+Lessons:
+Still having a hard time representing data which should be stored in a dictionary <K, V> in R.  Other than that dplyr is an awesome tool (once the data has been cleansed and normalized.)  
+
+*BIBLIOGRAPHY*
+R setup:
+https://stackoverflow.com/questions/37014340/installing-r-package-opennlp-in-r
+Data Frame POS Manipulation:
+https://stackoverflow.com/questions/28764056/could-not-find-function-tagpos
+Data Science:
+https://arxiv.org/abs/1512.02914
+https://fivethirtyeight.com/features/a-statistical-analysis-of-the-work-of-bob-ross/
