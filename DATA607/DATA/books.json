@@ -1,0 +1,27 @@
+{
+	"My Favorite Books": [{
+			"Title": "Elements of Programming Interviews in Python",
+			"Authors": ["Adnan Aziz", "Tsung-Hsien Lee", "Amit Prakash"],
+			"Publishing House": "CreateSpace Independent Publishing Platform",
+			"Length": 458,
+			"ISBN-10": 1537713949
+
+		},
+		{
+			"Title": "The Algorithm Design Manual",
+			"Authors": ["Steven S. Skiena"],
+			"Publishing House": "Springer",
+			"Length": 730,
+			"ISBN-10": 1849967202
+
+		},
+		{
+			"Title": "The Stranger",
+			"Authors": ["Albert Camus"],
+			"Publishing House": "Vintage",
+			"Length": 123,
+			"ISBN-10": 9780679720
+
+		}
+	]
+}

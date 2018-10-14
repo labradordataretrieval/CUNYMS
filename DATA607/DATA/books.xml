@@ -1,0 +1,33 @@
+<?xml version="1.0"?> 
+<table>
+  <tr>
+    <td>Title</td>
+    <td>Authors</td> 
+    <td>Publishing House</td>
+    <td>Length</td>
+    <td>ISBN-10</td> 
+  </tr>
+  <tr>
+    <td>Elements of Programming Interviews in Python</td>
+    <td>Adnan Aziz, Tsung-Hsien Lee, Amit Prakash</td>
+    <td>CreateSpace Independent Publishing Platform</td>
+    <td>458</td>
+    <td>1537713949</td>
+  </tr>
+  <tr>
+    <td>The Algorithm Design Manual</td>
+    <td>Steven S. Skiena</td>
+    <td>Springer</td>
+    <td>730</td>
+    <td>1849967202</td>
+  </tr>
+  <tr>
+    <td>The Stranger</td>
+    <td>Albert Camus</td>
+    <td>Vintage</td>
+    <td>123</td>
+    <td>9780679720</td>
+  </tr>
+</table>
+
+

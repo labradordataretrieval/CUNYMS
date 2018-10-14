@@ -1,0 +1,469 @@
+    6  vim
+    7  clear
+    8  ls
+    9  python
+   10  docker
+   11  docker pull jupyter/datascience-notebook
+   12  docker pull jupyter/datascience-notebook:latest
+   13  exit
+   14  cd ~/Downloads/
+   15  ls
+   16  cat hw2
+   17  cat hw2.docx 
+   18  cat hw2.docx less
+   19  rm hw2*
+   20  ls -a
+   21  ls -1
+   22  rm hw2*
+   23  clear
+   24  exit
+   25  top
+   26  clear
+   27  free
+   28  exit
+   29  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+   30  brew cask install java8
+   31  brew cask install java8
+   32  $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+   33  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+   34  brew cask install java8
+   35  brew install java8
+   36  which java
+   37  java -version
+   38  brew tap caskroom/versions
+   39  brew cask install java8
+   40  brew install scala
+   41  brew install apache-spark
+   42  brew install zeppelin
+   43  brew install apache-zeppelin
+   44  clear
+   45  ls
+   46  grep \(*\)[">] students.html
+   47  awk \(*\)[">] students.html
+   48  clear
+   49  sed -n '/a/'p words.txt
+   50  sed -n '/a/'p students.html 
+   51  clear
+   52  sed -n \(*\)[">] students.html 
+   53  sed -n \(*\)"> students.html 
+   54  sed -n '\(*\)' students.html 
+   55  sed -n '\(*\)'p students.html 
+   56  grep '^[eat]*$' students.html 
+   57  clear
+   58  grep '^[\(*\)]*$' students.html 
+   59  clear
+   60  ls
+   61  cd Desktop/
+   62  ls
+   63  ls -a
+   64  pwd
+   65  ls
+   66  cat clear
+   67  clear
+   68  ls
+   69  rsa -gen
+   70  ls
+   71  cd students_incomming/
+   72  ls
+   73  grep \(*\)[">] students.html
+   74  bash
+   75  HHHHHHHHHHHHHHHHHHHHHHHHHHHHHhHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+   76  clear
+   77  ls
+   78  exit
+   79  clear
+   80  brew install mariadb-connector-c
+   81  vim ~/my.cnf
+   82  mysqladmin -u root -p status
+   83  sudo chmod -R 777 /var/lib/mysql/
+   84  clear
+   85  ps ax | grep mysql
+   86  mysql
+   87  clear
+   88  connObj <- dbConnect(MySQL(), user='root', password='root',
+   89  mysql
+   90  brew install mysql
+   91  mariadb
+   92  cd /usr/local/mysql/
+   93  ls
+   94  vim ~/.bash_profile
+   95  . ~/.bash_profile 
+   96  mysql --user=root --password=the_root_password_you_wrote_down_above
+   97  mysql --user=root --password=tennis91
+   98  sudo rm /usr/local/mysql
+   99  sudo rm -rf /usr/local/mysql*
+  100  sudo rm -rf /Library/StartupItems/MySQLCOM
+  101  mysql
+  102  mysql --user=root --password=pizza12345
+  103  clear
+  104  ls
+  105  vim ~/.my.cnf
+  106  ls
+  107  vim ~/.my.cnf
+  108  cp ~/.my.cnf my.cnf
+  109  clear
+  110  vim ~/.my.cnf
+  111  vim ~/.my.cnf
+  112  mariadb
+  113  mysql.server start
+  114  mysql --user=root --password=pizza12345
+  146  git init
+  147  git add README.md
+  148  git commit -m "first commit"
+  149  git remote add origin https://github.com/alejandroniculescu/cuny.git
+  150  git push -u origin master
+  151  clear
+  152  ls
+  153  cd Data607/
+  154  ls
+  155  git init
+  156  git add README.md
+  157  git commit -m "first commit"
+  158  git remote add origin https://github.com/alejandroniculescu/cuny.git
+  159  git push -u origin master
+  160  ls -a
+  161  add .gitignore 
+  162  git rm --cached <file path>
+  163  git rm --cached .gitignore 
+  164  clear
+  165  ls
+  166  ls -a
+  167  git remote add origin https://github.com/alejandroniculescu/cuny.git
+  168  clear
+  169  ls
+  170  ls -a
+  171  cat .git
+  172  cd .git
+  173  ls
+  174  clear
+  175  ls
+  176  cd ../
+  177  ls
+  178  ls
+  179  cd ../
+  180  ls
+  181  cd Data607/
+  182  ls
+  183  ls
+  184  pwd
+  185  ls
+  186  cat test.txt 
+  187  ls
+  188  cat test.csv 
+  189  ls
+  190  cat test.csv 
+  191  vim ~/.bash_profile 
+  192  cat ~/
+  193  ls
+  194  pwd
+  195  clear
+  196  ls
+  197  rm test.*
+  198  ls
+  199  ls
+  200  cat Data607.Rproj 
+  201  clear
+  202  ls
+  203  cd ../
+  204  ls
+  205  clear
+  206  ls
+  207  clear
+  208  ls
+  209  cd Data607/
+  210  ls
+  211  cd ~
+  212  ls
+  213  cd Desktop/
+  214  ls
+  215  cd DATA607/
+  216  ls
+  217  pwd
+  218  ls
+  219  git status
+  220  git add ~/Desktop/DATA607/HW2.sql 
+  221  git add ~/Desktop/DATA607/movieReviews.csv 
+  222  git add ~/Desktop/DATA607/hw_2_DATA_607.Rmd 
+  223  git status
+  224  git commit -m "hw_2 data_607"
+  225  git push
+  226  ls
+  227  ls -a
+  228  git init
+  229  ls
+  230  git add ~/Desktop/DATA607/HW2.sql 
+  231  git add ~/Desktop/DATA607/movieReviews.csv 
+  232  git add ~/Desktop/DATA607/HW2.sql 
+  233  git commit -m "hw_2 data_607"
+  234  git add ~/Desktop/DATA607/hw_2_DATA_607.Rmd 
+  235  git commit -m "hw_2 data_607"
+  236  git push
+  237  git push
+  238  git push DATA607
+  239      git push --set-upstream DATA607 master
+  240  git login
+  241  git --help
+  242  clear
+  243  ls
+  244  ls -a
+  245  rm .git/
+  246  rm .git/*
+  247  clear
+  248  ls
+  249  ls -a
+  250  rm -r .git/
+  251  y
+  252  clear
+  253  ls
+  254  ls -a
+  255  rmdir .git/
+  256  rm -rf .git/
+  257  clear
+  258  ls -a
+  259  git remote add origin https://github.com/alejandroniculescu/DATA607
+  260  git add HW2.sql hw_2_DATA_607.Rmd movieReviews.csv 
+  261  git commit -m "hw_2 files"
+  262  git push -u origin master
+  263  git --help
+  264  git -username
+  265  github
+  266  brew install github
+  267  git config
+  268  git config -p
+  269  clear
+  270  git config
+  271  clear
+  272  ssh-keygen -t rsa -b 4096 -C "al3xanderniculescu@gmail.com"
+  273  eval "$(ssh-agent -s)"
+  274  ssh-add -K ~/.ssh/id_rsa
+  275  pbcopy < ~/.ssh/id_rsa.pub
+  276  git push -u origin master
+  277  git pull
+  278  git push -u origin master
+  279  ls
+  280  mv Foster\ Provost\,\ Tom\ Fawcett\ Data\ Science\ for\ Business\ What\ you\ need\ to\ know\ about\ data\ mining\ and\ data-analytic\ thinking\ \(1\).pdf ../
+  281  ls
+  282  clear
+  283  ls
+  284  git pull
+  285  ls
+  286  git branch
+  287  git pull cuny/DATA607
+  288  https://github.com/alejandroniculescu/cuny.git
+  289  git https://github.com/alejandroniculescu/cuny.git
+  290  cd ../
+  291  mkdir CUNY
+  292  mv DATA607/* CUNY/
+  293  ls
+  294  cd CUNY/
+  295  ls
+  296  mkdir DATA607
+  297  mv HW2.sql hw_2_DATA_607.Rmd movieReviews.csv DATA607/
+  298  cd DATA607/
+  299  ls
+  300  cd ../
+  301  ls
+  302  git https://github.com/alejandroniculescu/cuny.git
+  303  ls
+  304  cd Desktop/
+  305  ls
+  306  cd ,,.
+  307  cd ,,.
+  308  cd ../
+  309  cd ~
+  310  cd Documents/
+  311  ls
+  312  touch R
+  313  cd R 
+  314  rm R 
+  315  mdkir R
+  316  mkdir R
+  317  exit
+  318  cd Documents/
+  319  ls
+  320  cd R/
+  321  ls
+  322  cd DATA606Fall2018/
+  323  ls
+  324  cd data/
+  325  ls
+  326  cd ../
+  327  clear
+  328  ls
+  329  cd data/openintro.org/
+  330  pwd
+  331  clera
+  332  clear
+  333  clear
+  334  ls
+  335  clear
+  336  ls
+  337  cd Documents/
+  338  ls
+  339  cd R/
+  340  ls
+  341  cd DATA60607
+  342  cd DATA607/
+  343  cd data/
+  344  ls
+  345  pwd
+  346  brew install slack
+  347  vim sfsds
+  348  clear
+  349  vim
+  350  clear
+  351  cd /Users/alejandro/documents/R/DATA607/data/tournamentinfo.txt
+  352  cd /Users/alejandro/documents/R/DATA607/data/
+  353  lz
+  354  ls
+  355  cat tournamentinfo.txt 
+  356  clear
+  357  l
+  358  ls
+  359  cat MyData.csv 
+  360  clear
+  361  ls
+  362  cd ~
+  363  ls
+  364  cd Desktop/
+  365  ls
+  366  clear
+  367  touch gitHelp
+  368  vim gitHelp 
+  369  vim gitHelp 
+  370  vim gitHelp 
+  371  vim gitHelp 
+  372  vim gitHelp 
+  373  clear
+  374  cd ~/Documents/
+  375  ls
+  376  pwd
+  377  cd R/
+  378  ls
+  379  cd DATA607/
+  380  ls
+  381  mkdir HW
+  382  mkdir Projects
+  383  clear
+  384  ls
+  385  rm Project
+  386  rm Projects
+  387  rmdir Projects
+  388  clear
+  389  mkdir PROJECTS
+  390  cd ../
+  391  ls
+  392  cd DATA606
+  393  ls
+  394  cd inst/
+  395  ls
+  396  cd labs/
+  397  ls
+  398  pwd
+  399  pwd
+  400  clear
+  401  ls
+  402  cd ../
+  403  cd labs/
+  404  cd Lab2/
+  405  ls
+  406  cd ../
+  407  ls
+  408  cd ../
+  409  ls
+  410  cd ../
+  411  ls
+  412  cd ,,.
+  413  cd ../
+  414  ls
+  415  cd DATA606Fall2018/
+  416  ls
+  417  cd AlexanderNiculescu/
+  418  ls
+  419  mkdir HW
+  420  mkdir LABS
+  421  pwd
+  422  clear
+  423  cd ~
+  424  ls
+  425  git pull
+  426  clear
+  427  cd Documents/
+  428  ls
+  429  cd R/
+  430  ls
+  431  git pull
+  432  clear
+  433  ls
+  434  git branch
+  435  git status
+  436  git pull
+  437  ls
+  438  cd DATA606
+  439  ls
+  440  cd inst/
+  441  ls
+  442  cd labs/
+  443  ls
+  444  cd Lab2/
+  445  ls
+  446  cd more/
+  447  ls
+  448  pwd
+  449  cd master\ list/
+  450  ls
+  451  touch writerpeepl.txt
+  452  vim writerpeepl.txt 
+  453  clear
+  454  ls
+  455  cd Documents/R/DATA606Fall2018/AlexanderNiculescu/
+  456  ls
+  457  cd HW
+  458  ls
+  459  touch hw_master
+  460  vim hw_master 
+  461  cd ../
+  462  ls
+  463  mv HW* HW/
+  464  ls
+  465  cd HW/
+  466  ls
+  467  cd ../
+  468  ls
+  469  mv probability LABS/
+  470  ls
+  471  mv probability* LABS/
+  472  clear
+  473  ls
+  474  clear
+  475  ls
+  476  cd ~
+  477  ls
+  478  cd Desktop/
+  479  ls
+  480  cat master\ list/
+  481  cd master\ list/
+  482  ls
+  483  cd ../
+  484  ls
+  485  cd CUNY/
+  486  ls
+  487  cat cuny/
+  488  cd cuny/
+  489  ls
+  490  cat README.md 
+  491  cd ~
+  492  clear
+  493  ls
+  494  exit
+  495  ls
+  496  vim
+  497  exit
+  498  exit
+  499  exit
+  500  history
+  501  cat history
+  502  clear
+  503  git pull
+  504  clear
+  505  history > hellp.txt
