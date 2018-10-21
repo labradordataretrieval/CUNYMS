@@ -132,14 +132,13 @@ cat("Chance the mean lifespan of 15 Lightbulbs lasts 10,500 Hours: ", lightbulbM
 ```{r 4.40_d}
 normalSample       <- seq(9000 - (4 * 1000), 9000 + (4 * 1000))
 randomSample       <- seq(9000 - (4 * 1000), 9000 + (4 * SE(1000, 15)), length = 15)
-secondNorm         <- dnorm(normsample,9000,1000)
-secondRandom       <- dnorm(randomsample,9000,1000)
+secondNorm         <- dnorm(normalSample,9000,1000)
+secondRandom       <- dnorm(randomSample,9000,1000)
 
 plot(normalSample, secondNorm, col="black", lines(randomSample, secondRandom, col="red"))
 ```
 (e) Could you estimate the probabilities from parts (a) and (c) if the lifespans of light bulbs had a skewed distribution?
 We could not estimate (a) without a nearly normal population distribution. We also could not estimate (c) since the sample size is not sufficient to yield a nearly normal sampling distribution if the population distribution is not nearly normal.
-
 
 4.48 Same observation, different sample size. Suppose you conduct a hypothesis test based on a sample where the sample size is n = 50, and arrive at a p-value of 0.08. You then refer back to your notes and discover that you made a careless mistake, the sample size should have been n = 500. Will your p-value increase, decrease, or stay the same? Explain.
 The p-value will decrease.  As a sample set becomes larger, the p-value will decrease in size.
