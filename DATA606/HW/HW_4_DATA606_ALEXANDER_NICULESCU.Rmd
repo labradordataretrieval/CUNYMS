@@ -131,11 +131,11 @@ cat("Chance the mean lifespan of 15 Lightbulbs lasts 10,500 Hours: ", lightbulbM
 (d) Sketch the two distributions (population and sampling) on the same scale.
 ```{r 4.40_d}
 normalSample       <- seq(9000 - (4 * 1000), 9000 + (4 * 1000))
-randomSample       <- seq(9000 - (4 * 1000), 9000 + (4 * SE(1000, 15)))
+randomSample       <- seq(9000 - (4 * 1000), 9000 + (4 * SE(1000, 15)), length = 15)
 secondNorm         <- dnorm(normsample,9000,1000)
 secondRandom       <- dnorm(randomsample,9000,1000)
 
-plot(normSample, secondNorm, col="black", lines(randomSample, secondRandom, col="red"))
+plot(normalSample, secondNorm, col="black", lines(randomSample, secondRandom, col="red"))
 ```
 (e) Could you estimate the probabilities from parts (a) and (c) if the lifespans of light bulbs had a skewed distribution?
 We could not estimate (a) without a nearly normal population distribution. We also could not estimate (c) since the sample size is not sufficient to yield a nearly normal sampling distribution if the population distribution is not nearly normal.
