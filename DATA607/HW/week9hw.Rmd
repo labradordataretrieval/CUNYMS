@@ -1,0 +1,40 @@
+```{r setup, include=FALSE}
+NYTIMES_KEY="b196566ce24f4d3f87fb00daef3bf67f"
+```
+
+I googled 'http://www.storybench.org/working-with-the-new-york-times-api-in-r/'
+```{r install}
+#install.packages("devtools")
+#devtools::install_github("mkearney/nytimes")
+#install.packages("jsonlite")
+```
+```{r libraries}
+library(jsonlite)
+library(dplyr)
+```
+The usefulness of this API request would be in figuring out the longest running current books on the Best Seller list
+
+As of this submission, HOLY GHOST by John Sandford has been on the best seller list longest.
+
+Of course, I can also do a historical rank for the future.
+
+Lastly, I should probably add a regex to remove or trim off the timestamp from the yyy-mm-dd hh-mm-ss
+```{r anotherQuery}
+LISTOVERVIEW <- toString(paste("https://api.nytimes.com/svc/books/v3/lists/overview/2018-11-02.json?api-key=", NYTIMES_KEY, sep=""))
+y <- fromJSON(LISTOVERVIEW, flatten = TRUE) %>% data.frame()
+
+z <- (y$results.lists.books[1])
+names(z) <- c("top_book_list")
+
+cat("Top Books on the Best Seller List, and how many times it has appeared on the list:")
+for(i in 1:length(z$top_book_list$author)){
+  cat("\n", z$top_book_list$title[i], "by: ", z$top_book_list$author[i], " has been on the best seller list for",            z$top_book_list$weeks_on_list[i], "weeks", "as of", z$top_book_list$created_date[i])
+}
+```
+
+
+
+
+Sources Cited:
+http://www.storybench.org/working-with-the-new-york-times-api-in-r/
+https://github.com/NYTimes/public_api_specs/blob/master/books_api/books_api.md
