@@ -199,7 +199,7 @@ sample_means50 <- rep(NA, 5000)
 for(i in 1:5000){
    samp <- sample(area, 50)
    sample_means50[i] <- mean(samp)
-   print(i)
+   #print(i)
    }
 ```
 
