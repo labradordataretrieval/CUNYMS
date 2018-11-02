@@ -1,0 +1,89 @@
+---
+title: DATA 606 Data Project Proposal
+author: 
+---
+
+### Data Preparation
+```{r download-data}
+FOODWORLDCUPURL <- "https://raw.githubusercontent.com/fivethirtyeight/data/master/food-world-cup/food-world-cup-data.csv"
+
+read.csv(FOODWORLDCUPURL)
+
+```
+
+```{r installs}
+
+```
+
+```{r setup, echo=TRUE, results='hide', warning=FALSE, message=FALSE}
+# load data
+
+
+
+### Research question 
+
+
+```
+You should phrase your research question in a way that matches up with the scope of inference your dataset allows for.**
+I want to clean and transform my data first to answer this question: who is most likely to have the blandest taste in America?
+A rank of 3 corresponds to bland.  After I've removed all 1's, 2's, 4's, 5's and N/As then I will agreggate 3's accross columns
+
+These are my features:
+RespondentID	Generally speaking, how would you rate your level of knowledge of cuisines from different parts of the world?	
+How much, if at all, are you interested in cuisines from different parts of the world?
+Please rate how much you like the traditional cuisine of [countryName]:
+Gender
+Age
+Household Income	
+Education	
+Location (Census Region)
+
+### Cases 
+
+**What are the cases, and how many are there?**
+Each case represents a contestant at the 2014 food world cup
+1374
+
+### Data collection 
+
+**Describe the method of data collection.**
+A survey was given at the food world cup, and then I curled it.  
+The transformation will be a sum of rank 3 foods.
+
+
+### Type of study 
+
+**What type of study is this (observational/experiment)?**
+This is an observational study
+
+
+### Data Source 
+
+**If you collected the data, state self-collected. If not, provide a citation/link.**
+
+https://github.com/fivethirtyeight/data/blob/master/food-world-cup/food-world-cup-data.csv
+
+
+### Dependent Variable
+
+**What is the response variable? Is it quantitative or qualitative?**
+Blandness, which is a quantatative intepretation of a food ranking [qualitative.]
+
+### Independent Variable
+
+**You should have two independent variables, one quantitative and one qualitative.**
+Education: qualitative
+Location: quantatitative
+Maybe also add Age, and other demographic features
+
+### Relevant summary statistics 
+
+**Provide summary statistics for each the variables. Also include appropriate visualizations related to your research question (e.g. scatter plot, boxplots, etc). This step requires the use of R, hence a code chunk is provided below. Insert more code chunks as needed.**
+
+After doing the transformation, will have summaries for blandness groupings, which will be filtered by location etc.
+Will represent box plots and normal plots interactively using ShinyR and Dplyr
+
+```{r}
+
+```
+
