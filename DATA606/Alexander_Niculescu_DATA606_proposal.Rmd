@@ -7,7 +7,7 @@ author: Alexander Niculescu
 ```{r download-data}
 FOODWORLDCUPURL <- "https://raw.githubusercontent.com/fivethirtyeight/data/master/food-world-cup/food-world-cup-data.csv"
 
-read.csv(FOODWORLDCUPURL)
+#read.csv(FOODWORLDCUPURL)
 
 ```
 
