@@ -1,0 +1,33 @@
+---
+title: "Discussion 11"
+output: html_document
+---
+
+#Gmail AutoComplete
+
+*Perform a Scenario Design analysis as described below.  Consider whether it makes sense for your selected recommender system to perform scenario design twice, once for the organization (e.g. Amazon.com) and once for the organization's customers.*
+
+1. The target users are anyone trying to complete a simple email with a small handheld device or tablet.
+
+2. The key goal is to build ai to collect all our information, whilst being able to read interpret, and respond to emails.
+
+3. As a consumer, I can help them accomplish this goal by participating to use all google products and beta products, and correcting the AI tool.
+
+*Attempt to reverse engineer what you can about the site, from the site interface and any available information that you can find on the Internet or elsewhere.*
+
+Reverse engineering this would require a team of PHD's and an army of engineers.  However, using the BoW model with an RNN-LM would be a start.  Also, training model convergence to be able to predict certain phrases might not be so difficult for dictionary terms.
+
+Originally, I thought google was using a vector model of past emails, but insteal it is conditionally building phrases.
+
+Google is moving away from bag of words, ngram etc for emails and instead framing predicting the next word "as a sequence-to-sequence (seq2seq) machine translation task" (smart compose blog.)
+
+
+*Include specific recommendations about how to improve the site's recommendation capabilities going forward.*
+
+Something I would recommend including in the algorithm is noting maybe when the song was rated or how often the song is listened to in comparison to when the song was originally released. This would give the algorithm the sense as to if the user is interested in what's popular or insterested more into less mainstream music.
+
+
+Sources Cited:
+https://www.theguardian.com/technology/2018/may/09/gmail-smart-compose-google-will-now-autocomplete-whole-emails
+https://www.scmp.com/tech/article/2146501/gmail-can-now-autocomplete-entire-emails-new-feature-called-smart-compose-heres
+https://ai.googleblog.com/2018/05/smart-compose-using-neural-networks-to.html
