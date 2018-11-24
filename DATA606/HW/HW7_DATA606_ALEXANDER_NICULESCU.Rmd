@@ -1,0 +1,84 @@
+---
+title: "HW6"
+author: "alexander"
+date: "10/31/2018"
+output: html_document
+---
+
+Chapter 7 - Introduction to Linear Regression
+Practice: 7.23, 7.25, 7.29, 7.39
+Graded: 7.24, 7.26, 7.30, 7.40
+
+Chapter 8 - Multiple and Logistic Regression
+Practice: 8.1, 8.3, 8.7, 8.15, 8.17
+Graded: 8.2, 8.4, 8.8, 8.16, 8.18
+
+```{r setup, include=FALSE}
+
+```
+
+7.24 Nutrition at Starbucks, Part I. The scatterplot below shows the relationship between the number of calories and amount of carbohydrates (in grams) Starbucks food menu items con- tain.21 Since Starbucks only lists the number of calories on the display items, we are interested in predicting the amount of carbs a menu item has based on its calorie content.
+
+(a) Describe the relationship between number of calories and amount of carbohydrates (in grams) that Starbucks food menu items contain.
+The relationship is a direct poisitive linear correlation
+(b) In this scenario, what are the explanatory and response variables?
+x(Carbs) is the explanatory, y(Calories) is the response
+
+(c) Why might we want to fit a regression line to these data?
+To find whether or not high calorie foods are high in carbs, or to help suggest menu
+items for carb sensitive customers.
+(d) Do these data meet the conditions required for fitting a least squares line?
+Yes, because the residual plot reveals increased frequency at higher calories and tighter bound errors at lower calories.  Least squares should help us fit this accordingly.
+
+
+7.26 Body measurements, Part III. Exercise 7.15 introduces data on shoulder girth and height of a group of individuals. The mean shoulder girth is 107.20 cm with a standard deviation of 10.37 cm. The mean height is 171.14 cm with a standard deviation of 9.41 cm. The correlation between height and shoulder girth is 0.67.
+(a) Write the equation of the regression line for predicting height.
+\[
+  \hat{height} = beta_0 - beta_1*\hat{shoulder girth}
+\]
+(b) Interpret the slope and the intercept in this context.
+\[
+  beta_1 = R * s_y/s_x
+\]
+```{r 7.26 b}
+R <- 0.67
+x_mean <- 107.20
+y_mean <- 171.14
+beta_1 <- 0.67 * (9.41/10.37)
+beta_0 <- y_mean - (beta_1*x_mean)
+```
+(c) Calculate R^2 of the regression line for predicting height from shoulder girth, and interpret it in the context of the application.
+```{r 7.26 c}
+R_squared <- R * R
+```
+
+(d) A randomly selected student from your class has a shoulder girth of 100 cm. Predict the height of this student using the model.
+```{r 7.26 d}
+x_rand <- 100
+y_rand <- beta_0 + beta_1*x_rand
+cat("the predicted height of the student is:", y_rand, "cm" )
+```
+(e) The student from part (d) is 160 cm tall. Calculate the residual, and explain what this residual means.
+\[
+  e_i = y_i \hat{y}i
+\]
+```{r 7.26 e}
+e_i <- 160 - y_rand
+cat("the residual is:", e_i, "cm")
+```
+A positive residual means that the model underestimates the height.
+
+(f) A one year old has a shoulder girth of 56 cm. Would it be appropriate to use this linear model to predict the height of this child?
+
+ No, this calculation would require extrapolation.
+ 
+ 
+ 7.30 Cats, Part I. The following regression output is for predicting the heart weight (in g) of cats from their body weight (in kg). The coefficients are estimated using a dataset of 144 domestic cats.
+ 
+(a) Write out the linear model.
+-0.357 + 4.034 * body_wt
+(b) Interpret the intercept.
+
+(c) Interpret the slope.
+(d) Interpret R2.
+(e) Calculate the correlation coefficient.
