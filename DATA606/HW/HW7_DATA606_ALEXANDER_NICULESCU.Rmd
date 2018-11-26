@@ -73,12 +73,42 @@ A positive residual means that the model underestimates the height.
  No, this calculation would require extrapolation.
  
  
- 7.30 Cats, Part I. The following regression output is for predicting the heart weight (in g) of cats from their body weight (in kg). The coefficients are estimated using a dataset of 144 domestic cats.
+7.30 Cats, Part I. The following regression output is for predicting the heart weight (in g) of cats from their body weight (in kg). The coefficients are estimated using a dataset of 144 domestic cats.
  
 (a) Write out the linear model.
 -0.357 + 4.034 * body_wt
 (b) Interpret the intercept.
-
+The negative intercept isn't helpful as a data point, but tells us how to build our slope.  A cat can't have a negative heart rate.
 (c) Interpret the slope.
+For each kg of body weight added, the heart weight rises by 4.034 grams
 (d) Interpret R2.
+64.66 % of the time, the linear model describes the variation in heart weight(g) by body weight(kg.)
+
 (e) Calculate the correlation coefficient.
+```{r 7.30 e}
+R <- sqrt(.6466)
+cat("the correlation coefficient (R) =", R)
+```
+
+
+7.40 Rate my professor. Many college courses conclude by giving students the opportunity to evaluate the course and the instructor anonymously. However, the use of these student evalu- ations as an indicator of course quality and teaching effectiveness is often criticized because these measures may reflect the influence of non-teaching related characteristics, such as the physical appearance of the instructor. Researchers at University of Texas, Austin collected data on teaching evaluation score (higher score means better) and standardized beauty score (a score of 0 means average, negative score means below average, and a positive score means above average) for a sample of 463 professors.24 The scatterplot below shows the relationship between these variables, and also provided is a regression output for predicting teaching evaluation score from beauty score.
+
+
+(a) Given that the average standardized beauty score is -0.0883 and average teaching evaluation score is 3.9983, calculate the slope. Alternatively, the slope may be computed using just the information provided in the model summary table.
+```{r 7.40a}
+x_mean <- -.0883
+y_mean <- 3.9983
+beta_0 <- 4.010
+beta_1 <- (y_mean - beta_0)/x_mean
+
+cat("The slope is:", beta_1)
+```
+(b) Do these data provide convincing evidence that the slope of the relationship between teaching evaluation and beauty is positive? Explain your reasoning.
+The relationship is weak; the slop is near 0 and the scatter plot shows that as well.  Theese data show a lack of sufficient evidence that there is a relationship between teaching eval and beauty.
+(c) List the conditions required for linear regression and check if each one is satisfied for this model based on the following diagnostic plots.
+When fitting a least squares line, we generally require
+1. Linearity. The data should show a linear trend. If there is a nonlinear trend (e.g. left panel of Figure 7.13), an advanced regression method from another book or later course should be applied.
+There is linearity; figure 3 (The normal q_q plot shows normal distribution)
+2. Nearly normal residuals. Generally the residuals must be nearly normal. 
+figure 1, figure 4
+3. Constant variability. The variability of points around the least squares line remains roughly constant.
