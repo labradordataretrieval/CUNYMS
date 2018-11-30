@@ -1,0 +1,100 @@
+---
+title: "HW_8"
+author: "alexander"
+date: "11/29/2018"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Chapter 8 - Multiple and Logistic Regression
+Practice: 8.1, 8.3, 8.7, 8.15, 8.17
+Graded: 8.2, 8.4, 8.8, 8.16, 8.18
+
+8.2 Baby weights, Part II. Exercise 8.1 introduces a data set on birth weight of babies. Another variable we consider is parity, which is 0 if the child is the first born, and 1 otherwise. The summary table below shows the results of a linear regression model for predicting the average birth weight of babies, measured in ounces, from parity.
+                Estimate  | Std. Error | t value  | Pr(>|t|)
+(Intercept)|     120.07   |  .60       | 199.94   | 0.0000
+parity     |      -1.93   |  1.19      | -1.62    | 0.1052
+
+(a) Write the equation of the regression line.
+average_birth_weight = 120.07 - 1.93Parity
+
+(b) Interpret the slope in this context, and calculate the predicted birth weight of first borns and
+others.
+Every child born would have a weight of 120.07, and for every child born after the first born, subtract 1.62 to get the weight.
+
+(c) Is there a statistically significant relationship between the average birth weight and parity?
+No, Pr(.1052) was greater than 
+
+8.4 Absenteeism. Researchers interested in the relationship between absenteeism from school and certain demographic characteristics of children collected data from 146 randomly sampled stu- dents in rural New South Wales, Australia, in a particular school year. Below are three observations from this data set.
+
+(a) Write the equation of the regression line.
+
+Absent = 18.93 - 9.11(ethnic_background) + 3.10(sex) + 2.15(learner_status)
+
+(b) Interpret each one of the slopes in this context.
+ethnic_background: adds -9.11 for aboriginal kids
+sex: subtracts 3.10 days for males 
+learner_status: subracts 2.15 days for slow kids
+
+(c) Calculate the residual for the first observation in the data set: a student who is aboriginal, male, a slow learner, and missed 2 days of school.
+```{r 8.4_c}
+#inputes 0,1,1
+#left out the first variable x(0)
+Absentee <- 18.93 + 3.10*(1) + 2.15*(1)
+Res     <- 2 - Absentee
+cat("The residual after 2 days of school for a slow learning aboriginal male: ", abs(Res), "days")
+```
+(d) The variance of the residuals is 240.57, and the variance of the number of absent days for all students in the data set is 264.17. Calculate the R2 and the adjusted R2. Note that there are 146 observations in the data set.
+```{r 8.4_d}
+n       <- 146
+k       <- 3
+R_2     <- 240.57 / 264.17
+R_2_adj <- 1 - R_2*(n-1)/(n-k-1)
+cat("R^2:", R_2, ", R_2_adj:", R_2_adj)
+```
+
+8.8 Absenteeism, Part II. Exercise 8.4 considers a model that predicts the number of days absent using three predictors: ethnic background (eth), gender (sex), and learner status (lrn). The table below shows the adjusted R-squared for the model as well as adjusted R-squared values for all models we evaluate in the first step of the backwards elimination process.
+
+Which, if any, variable should be removed from the model first?
+Remove Learner.
+
+8.16
+Challenger disaster, Part I. On January 28, 1986, a routine launch was anticipated for the Challenger space shuttle. Seventy-three seconds into the flight, disaster happened: the shuttle broke apart, killing all seven crew members on board. An investigation into the cause of the disaster focused on a critical seal called an O-ring, and it is believed that damage to these O-rings during a shuttle launch may be related to the ambient temperature during the launch. The table below summarizes observational data on O-rings for 23 shuttle missions, where the mission order is based on the temperature at the time of the launch. Temp gives the temperature in Fahrenheit, Damaged represents the number of damaged O-rings, and Undamaged represents the number of O-rings that were not damaged.
+
+(a) Each column of the table above represents a different shuttle mission. Examine these data and describe what you observe with respect to the relationship between temperatures and damaged O-rings.
+Damaged O-rings have a lower base temperature aircraft.
+
+(b) Failures have been coded as 1 for a damaged O-ring and 0 for an undamaged O-ring, and a logistic regression model was fit to these data. A summary of this model is given below. Describe the key components of this summary table in words.
+
+Intercept: Starts with the base threshold for the line and initial state of craft.
+Temperature: Corresponds to the degrees lower per number of O-rings damaged
+
+(c) Write out the logistic model using the point estimates of the model parameters.
+log(p_hat_i/(1-p_hat_i)) = 11.6630-0.2162(O_ring)
+
+(d) Based on the model, do you think concerns regarding O-rings are justified? Explain.
+Yes, its the only variable in the system and also has a negative impact
+
+8.18
+Challenger disaster, Part II. Exercise 8.16 introduced us to O-rings that were identified as a plausible explanation for the breakup of the Challenger space shuttle 73 seconds into takeo↵ in 1986. The investigation found that the ambient temperature at the time of the shuttle launch was closely related to the damage of O-rings, which are a critical component of the shuttle. See this earlier exercise if you would like to browse the original data.
+(a) Use the model to calculate the probability that an O-ring will become damaged at each of the following ambient temperatures: 51, 53, and 55 degrees Fahrenheit
+```{r 8.18_a}
+pHat <- function(p_hat_i, b_0, b_1){
+  p_hat <- exp(b_0+(b_1*p_hat_i))/(1+exp(b_0+(b_1*p_hat_i)))
+  cat("The probability at", p_hat_i, " Fahrenheit is", p_hat, "\n")
+}
+pHat(51, 11.663, -.2162)
+pHat(53, 11.663, -.2162)
+pHat(55, 11.663, -.2162)
+```
+
+(b) Add the model-estimated probabilities from part (a) on the plot, then connect these dots using a smooth curve to represent the model-estimated probabilities.
+
+(c) Describe any concerns you may have regarding applying logistic regression in this application, and note any assumptions that are required to accept the model’s validity.
+No concerns at this time, just need to make sure that the regression follows a linear trend
