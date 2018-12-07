@@ -3,6 +3,21 @@ title: DATA 606 Data Project Proposal
 author: Alexander Niculescu
 ---
 
+
+### Libraries
+```{r libraries}
+library(httr)
+library(jsonlite)
+library(dplyr)
+library(stringr)
+library(knitr)
+library(readr)
+library(ggplot2)
+
+library(reticulate)
+
+```
+
 ### Data Preparation
 ```{bash download-world-cup-of-food-data}
 #library(RCurl)
@@ -17,24 +32,53 @@ iconv -f ISO-8859-1 -t UTF-8//TRANSLIT ./DATA/food-world-cup-data.csv -o ./DATA/
 ```{r read-world-cup-of-food-data}
 #df <- read.csv("./DATA/food-world-cup-data.csv", header = TRUE, fileEncoding = "UCS-2LE", sep = ",")
 #df <- read.csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/food-world-cup/food-world-cup-data.csv", header = TRUE)
-df <- read.csv("./DATA/food.csv", header = TRUE, sep = ",")
+og <- read.csv("./DATA/food.csv", header = TRUE, sep = ",")
+file <- "./DATA/food.csv"
+df <- read.csv(file=file, header=TRUE, sep=",")
 
-df
+# parse ratings as integer data type
+data <- read_csv(
+    file,
+    col_types = cols(
+        .default = col_integer()
+    )
+)
+data
+# select only ratings
+df <- data %>% select(-c(2:3, 44:48))
+
+# rename columns as country names
+colnames(df) <- str_replace(colnames(df), "^(.+ of )(.+)[:punct:]$", "\\2")
+colnames(df)[4] <- "Australia"  # peculiar encoding issue
+df_raw <- df
+df[is.na(df)] <- 0
+df[df != 3]  <- 0
+
+df_raw
 ```
 
-```{r installs}
+```{r transform}
+#adding keys = RespondId to compare to the og[original gangster] data set later
+df$RespondentID <- og$RespondentID
 
+#adding sums vector
+df_raw$sum_of_threes <- rowSums( df[2:41] )
+df_raw$RespondentID <- og$RespondentID
+df_raw$Gender<- og$Gender
+df_raw$Age<-og$Age
+df_raw$HouseholdIncome<- og$Household.Income
+df_raw$Education<- og$Education
+df_raw$Location<- og$Location..Census.Region.
+
+df_raw$Gender<- og$Gender
+
+
+write.csv(df_raw, './DATA/df_raw.csv')
+#Turn every 1,2,4,5, N/A into 0's
+#matrix <- data.matrix(df)
+#matrix
 ```
 
-```{r setup, echo=TRUE, results='hide', warning=FALSE, message=FALSE}
-# load data
-
-
-
-### Research question 
-
-
-```
 You should phrase your research question in a way that matches up with the scope of inference your dataset allows for.**
 I want to clean and transform my data first to answer this question: who is most likely to have the blandest taste in America?
 A rank of 3 corresponds to bland.  After I've removed all 1's, 2's, 4's, 5's and N/As then I will agreggate 3's accross columns
@@ -94,7 +138,49 @@ Maybe also add Age, and other demographic features
 After doing the transformation, will have summaries for blandness groupings, which will be filtered by location etc.
 Will represent box plots and normal plots interactively using ShinyR and Dplyr
 
-```{r}
+```{r viz-summary}
+summary(df_raw$Education)
+summary(df_raw$Gender)
+summary(df_raw$HouseholdIncome)
+summary(df_raw$Location)
+summary(df_raw$Age)
 
+
+#cor(df_raw$sum_of_threes, df_raw$Education)
+scatter.smooth(df_raw$sum_of_threes, df_raw$Education)
+
+##Gender
+df_raw %>%
+  filter(df_raw$sum_of_threes, df_raw$Gender == 'Male') %>%
+   summarise(total = n())
+
+df_raw %>%
+  filter(df_raw$sum_of_threes, df_raw$Gender == 'Female') %>%
+   summarise(total = n())
+
+
+##Level of Education
+df_raw %>%
+  filter(df_raw$sum_of_threes, df_raw$Education == 'Some college or Associate degree') %>%
+   summarise(total = n())
+
+df_raw %>%
+  filter(df_raw$sum_of_threes, df_raw$Education == 'High school degree') %>%
+  summarise(total = n())
+
+df_raw %>%
+  filter(df_raw$sum_of_threes, df_raw$Education == 'Graduate degree') %>%
+   summarise(total = n())
+
+##Household Income
+df_raw %>%
+  filter(df_raw$sum_of_threes, df_raw$HouseholdIncome == 'Some college or Associate degree') %>%
+   summarise(total = n())
 ```
 
+```{python}
+import pandas
+import os
+myDf = pandas.read_csv("/home/alejandro/Documents/CUNYMS/DATA606/PROJECTS/DATA/df_raw.csv")
+
+```
